@@ -1,0 +1,216 @@
+coluna,tipo,exemplo,descricao
+id_vaga,int64,4530,Identificador único da vaga
+titulo,object,CONSULTOR CONTROL M,Título da vaga publicada
+modalidade,object,CLT,"Modalidade da vaga (ex: CLT, PJ, remoto)"
+candidato_nome,object,José Vieira,Nome do candidato encaminhado
+candidato_codigo,float64,25632.0,Código interno do candidato
+situacao_candidado,object,Encaminhado ao Requisitante,
+data_candidatura,object,25-03-2021,Data em que o candidato se candidatou
+ultima_atualizacao,object,25-03-2021,Última atualização do status do candidato
+comentario,object,"Encaminhado para  - PJ R$ 72,00/hora",Observações ou detalhes da candidatura
+recrutador,object,Ana Lívia Moreira,Nome do recrutador responsável pelo encaminhamento
+informacoes_basicas_data_requicisao,object,10-03-2021,
+informacoes_basicas_limite_esperado_para_contratacao,object,00-00-0000,
+informacoes_basicas_titulo_vaga,object,CONSULTOR CONTROL M,
+informacoes_basicas_vaga_sap,object,Não,
+informacoes_basicas_cliente,object,"Morris, Moran and Dodson",
+informacoes_basicas_solicitante_cliente,object,Dra. Catarina Marques,
+informacoes_basicas_empresa_divisao,object,Decision São Paulo,
+informacoes_basicas_requisitante,object,Maria Laura Nogueira,
+informacoes_basicas_analista_responsavel,object,Ana Lívia Moreira,
+informacoes_basicas_tipo_contratacao,object,PJ/Autônomo,
+informacoes_basicas_prazo_contratacao,object,Indeterminado,
+informacoes_basicas_objetivo_vaga,object,Contratação,
+informacoes_basicas_prioridade_vaga,object,Média: Média complexidade 6 a 10 dias,
+informacoes_basicas_origem_vaga,object,Nova Posição,
+informacoes_basicas_superior_imediato,object,Superior Imediato:,
+informacoes_basicas_nome,object,Sidney,
+informacoes_basicas_telefone,object,1931158110.0,
+perfil_vaga_pais,object,Brasil,
+perfil_vaga_estado,object,Rio de Janeiro,
+perfil_vaga_cidade,object,Rio de Janeiro,
+perfil_vaga_bairro,object,Alphaville,
+perfil_vaga_regiao,object,Sul,
+perfil_vaga_local_trabalho,float64,2000.0,
+perfil_vaga_vaga_especifica_para_pcd,object,Não,
+perfil_vaga_faixa_etaria,object,De: Até:,
+perfil_vaga_horario_trabalho,object,Comercial,
+perfil_vaga_nivel profissional,object,Pleno,
+perfil_vaga_nivel_academico,object,Ensino Superior Completo,
+perfil_vaga_nivel_ingles,object,Nenhum,
+perfil_vaga_nivel_espanhol,object,Nenhum,
+perfil_vaga_outro_idioma,object,Nenhum,
+perfil_vaga_areas_atuacao,object,TI - Desenvolvimento/Programação-,
+perfil_vaga_principais_atividades,object,- Experiência comprovada em projetos de control-M,
+perfil_vaga_competencia_tecnicas_e_comportamentais,object,- Experiência comprovada em projetos de control-M,
+perfil_vaga_demais_observacoes,object,Contratação PJ Projeto pontual de 2 a 3 meses Cliente: Capgemini Projeto: Light / Rio deJaneiro Local de trabalho: Hibrida: remota e presencial na light no RJ quando solicitado,
+perfil_vaga_viagens_requeridas,object,Não,
+perfil_vaga_equipamentos_necessarios,object,Nenhum -,
+beneficios_valor_venda,object,-,
+beneficios_valor_compra_1,object,R$,
+beneficios_valor_compra_2,object,Obs = Calcular remuneração de 2700 + 300 de auxilio transporte,
+informacoes_basicas_data_inicial,object,06-04-2021,
+informacoes_basicas_data_final,object,05-04-2022,
+perfil_vaga_habilidades_comportamentais_necessarias,object,"Tempo de projeto = 1 ano
+Requested start date11.03.2021
+Scheduled project end date11.04.2021
+
+Local = Vaga em Manaus, precisa ser presencial, despesas pagas pelo cliente, início imediato",
+informacoes_basicas_nome_substituto,object,DIEGO CORRÊA BATINA,
+id_candidato,float64,25632.0,
+infos_basicas_telefone_recado,float64,,
+infos_basicas_telefone,object,(21) 93485-6494,
+infos_basicas_objetivo_profissional,object,ANALISTA DE REDES E TELEPROCESSAMENTO/INFRAESTRUTURA E OPERAÇÕES DE DATA CENTER / Control-M Administrator,
+infos_basicas_data_criacao,object,25-03-2021 13:36:19,
+infos_basicas_inserido_por,object,Ana Lívia Moreira,
+infos_basicas_email,object,josé_vieira@gmail.com,
+infos_basicas_local,object,"Rio de Janeiro, Rio de Janeiro",
+infos_basicas_sabendo_de_nos_por,object,Site de Empregos,
+infos_basicas_data_atualizacao,object,25-03-2021 13:36:19,
+infos_basicas_codigo_profissional,float64,25632.0,
+infos_basicas_nome,object,José Vieira,
+informacoes_pessoais_data_aceite,object,Cadastro anterior ao registro de aceite,
+informacoes_pessoais_nome,object,José Vieira,
+informacoes_pessoais_cpf,float64,,
+informacoes_pessoais_fonte_indicacao,object,:,
+informacoes_pessoais_email,object,josé_vieira@gmail.com,
+informacoes_pessoais_email_secundario,float64,,
+informacoes_pessoais_data_nascimento,object,0000-00-00,
+informacoes_pessoais_telefone_celular,object,(21) 93485-6494,
+informacoes_pessoais_telefone_recado,float64,,
+informacoes_pessoais_sexo,object,Masculino,
+informacoes_pessoais_estado_civil,object,Solteiro,
+informacoes_pessoais_pcd,object,Não,
+informacoes_pessoais_endereco,object,rio de janeiro,
+informacoes_pessoais_skype,float64,,
+informacoes_pessoais_url_linkedin,float64,,
+informacoes_pessoais_facebook,float64,,
+informacoes_profissionais_titulo_profissional,object,ANALISTA DE REDES E TELEPROCESSAMENTO/INFRAESTRUTURA E OPERAÇÕES DE DATA CENTER / Control-M Administrator,
+informacoes_profissionais_area_atuacao,object,"TI - Governança, TI - Infraestrutura, TI - Projetos, TI - Sistemas e Ferramentas, TI - Suporte",
+informacoes_profissionais_conhecimentos_tecnicos,object,"- PeopleSoft (PeopleTools 8.49, 8.53, 8.55, 8.57 PeopleCode, SQR, Crystal, XML Publisher, Query Manager, App Engine, App Package, Process Scheduler, Segurança, App Message, Integration Broker, Workflow, Tree Manager) - PeopleSoft FSCM 8.9, 9.1 HCM 9.0, 9.2, CRM e CS - Microsoft Visual Basic, Java, XML, JavaScript, HTML, CSS, JQuery, Python - Windows, Linux, Unix - Microsoft SQL Server, Microsoft Access, MySql, Oracle. - Oracle PL/SQL, Procedures, Triggers e Functions. - Oracle OIC",
+informacoes_profissionais_certificacoes,object,SAP SEM / BSC,
+informacoes_profissionais_outras_certificacoes,object,- Capacitação PeopleSoft (Formação Técnica) – PeopleSoft -1999 - Segurança da Informação – BrasilCap – 2009 - AD (Administração de Dados) BrasilCap– 2010 - Oracle HCM Cloud 2019 Sales Specialist Assessment – Ago-2020 - Oracle HCM Cloud Solution Engineer Specialist – Jul-2020 - Scrum Foundation Professional Certificate (SPFC) – CertiProf – Jul-2020 - Oracle Integration Cloud Services OIC – Oracle ICS – Udemy – Dez-2020,
+informacoes_profissionais_remuneracao,object,"R$ 5600,00 / mês / CLT",
+informacoes_profissionais_nivel_profissional,object,Pleno,
+formacao_e_idiomas_nivel_academico,object,Ensino Superior Completo,
+formacao_e_idiomas_nivel_ingles,object,Intermediário,
+formacao_e_idiomas_nivel_espanhol,object,Básico,
+formacao_e_idiomas_outro_idioma,object,-,
+cv_pt,object,"
+dados pessoais
+estado civil: casado
+idade: 33 anos
+
+objetivo
+levar à empresa o meu conhecimento, tornando-me um membro a mais para o seu desenvolvimento.
+
+formação acadêmica
+universidade estácio de sá – rj
+mba em ciência de dados e big data analytics - concluído
+
+universidade estácio de sá – rj
+superior em análise e desenvolvimento de sistemas - concluído
+
+ete juscelino kubitschek– faetec
+técnico em eletricidade - concluído
+
+certificados;
+• certificado itil foundadion v3
+
+
+cursos de aperfeiçoamento
+montagem e manutenção de micros, desenvolvimento delphi pleno, linguagem pl/sql, desenvolvedor java web pleno, scrum fundamentals (sfc) , itil foundation v3, db2 luw - database administration & certification workshop
+
+
+idiomas
+
+espanhol: avançado
+inglês: avançado
+
+
+experiência
+analista de sistemas sênior - por csc, projeto petrobrás
+dez/2020 - presente.
+
+alocado no cliente petrobras, faço parte da equipe responsável por administrar a ferramenta bmc control-m na parte de suporte e produção;
+instalação e configuração de agent, cm´s, fixes e upgrade do control-m em servidores unix, linux e windows.
+criação de jobs utilizando rotinas em shell script e/ou bats. configuração de jobs de sap; etl; bi data warehouse, bd, java, web services, file transfer (aft), etc... no control-m de acordo com a regra de negócio do cliente.
+extração de relatórios e otimização do ambiente de produção utilizando o pl/sql;
+utilização do ibm connect:direct para a transferência de arquivos interno e externo no cliente.
+responsável pela ferramenta ibm b2b sterling integrator, na qual administro e presto suporte para área financeira da empresa.
+suporte aos processos de conciliação bancária (edi), garantindo o funcionamento nas transações financeiras da empresa (via control_m) junto as vans e bancos.
+único responsável pelo ambiente mainframe com foco em sistemas de plano de saúde, atuando no desenvolvimento de novos processos jcl, analise e criação de gdg's, manutenção de tablespaces db2, sustentação do cics, sustentação do mvs para comunicação com baixa plataforma e dmz's para transferencia de arquivos financeiros para os bancos.
+
+analista de produção pleno - por coonectcom, projeto petrobrás
+jun/19 - dez/2020.
+suporte a produção 3º e 4º nivel em ambientes multiplataforma e mainframe.
+
+multiplataforma;
+desenvolvimento e agilidade de job's via control-m, processos automáticos de backup, shell scripts, query's, programas abap(sap), bi, data warehouse, web services, file transfer (aft), etl, filewatch, bd, bats, hadoop, workflows;
+extração de dados pl/sql;
+utilização do connect direct para transmissão de dados, utilizado para envio e recebimento de arquivos;
+manutenção de agentes do control-m;
+sistemas operacionais: linux, windows server e unix.
+suporte nos processos financeiros (edi) de transações bancárias, automatizadas via control-m, connect diretect e apoio ao cliente junto com os bancos e vans.
+
+
+mainframe;
+sistemas operacionais: z/nm, z/os, zlinux:
+• customização, homologação, administração e implantação de softwares da bmc para ibm mainframe
+(família ioa), bmc control m/o/r/d;
+• execução de pocs (proofs of concepf) para homologação de software, e confecção de relatórios gerenciais;
+• codificação e manutenção de jcls, cartões de controle, procedures e outros aplicativos pertencentes aos
+sistemas de infraestrutura na produção do ambiente control-m mainframe;
+• suporte e administração de rotinas de produção para coleta e salva de registros de smf:
+• suporte e administração de programas, sub-rotinas, jcl, cartões de controle, procedures e outros objetos
+pertencentes aos sistemas de infraestrutura do ambiente mainframe;
+• suporte e administração do gerenciador de fitoteca ca1;
+• aplicações/softwares:
+• tso/sdsf
+• roscoe
+• rpf
+• jes2
+• nje
+• ssh
+• sftp
+• dfhsm
+• ftp
+
+- linguagens de programação:
+• jcl
+• auto edit
+
+analista de produção v - preposto, por g&p em caixa econômica federal
+jun/18 - jan/2019.
+atuando como preposto na plataforma mainframe usando os sistemas zos/360, sdsf, ipsf e control-m para monitoração e tratamento de erros no ambiente de produção, recuperação de arquivos em disco e em fitas de backup, execução de pacotes e jcl via endevor, experiência também em cics, idms, db2 e sql.
+atuando também em plataforma de ambiente distribuído na execução de programas em shellscript, sql, java, via control-m enterprise e powercenter. monitoração de scripts e jobs automáticos, manutenção e tratamento de erros dos mesmos, execuções de arquivos b2b, importação de mapas via clearcase e nexus. atuando com as seguintes ferramentas powercenter workflow monitor, manager e repository. em ambientes windows e linux. conhecimento em shellscript e pl/sql.
+auxiliando na coordenação da equipe em ambas plataformas (alta e baixa), respondendo slm e comparecendo a reuniões com o cliente.
+
+analista de suporte a produção, por inforegis em gás natural fenosa(ceg)
+jan/15 – jun/18.
+desenvolvimento de processos jcl para integração com o control-m, em ambiente mainframe.
+experiência em control-m 6.0, control-m 8.0, control-d, administração e manutenção de job’s em jcl, utilitários de recuperação de arquivos, gerenciamento de impressoras e periféricos sob o z/os (os/390) administrados pelo subsistema jes3. gerenciamento de fluxos de jobs control-m, automação de processos batch através de scripts shell/sql, acompanhamento de desempenho da produção, monitoramento de processos através do control-m enterprise, sólidos conhecimentos em implantação de jcl automatizados no control-m em ambiente mainframe, implementação de processos em shellscript, pl/sql para processamento automático control-m. monitoramento nagios de sistemas de rede.
+participação no projeto “zeus” desenvolvido com finalidade de implantar um sistema integrando siebel e sgc, em alta e baixa plataforma.
+atuando também na coordenação técnica da equipe de scheduler, fornecendo suporte quando necessário.
+
+informática
+conhecimentos em jcl, shell script, html, delphi, sql, modelagem de dados, scrum, itil, java, c++, endevor, tso/ispf, sdsf, mainframe ibm, control-m, z/os, power center, clearcase, b2b, linguagem r, mvs, jboss, jee, java, connect direct, cics, db2.
+",
+cv_en,float64,,
+formacao_e_idiomas_instituicao_ensino_superior,object,Escola Politecnica USP,
+formacao_e_idiomas_cursos,object,Tecnologia da Informação,
+formacao_e_idiomas_ano_conclusao,float64,2020.0,
+informacoes_pessoais_download_cv,object,388.pdf,
+informacoes_profissionais_qualificacoes,float64,,
+informacoes_profissionais_experiencias,float64,,
+formacao_e_idiomas_outro_curso,object,Outro Curso:,
+cargo_atual_id_ibrati,float64,54093.0,
+cargo_atual_email_corporativo,float64,,
+cargo_atual_cargo_atual,object,Consultor (a) SAP,
+cargo_atual_projeto_atual,float64,,
+cargo_atual_cliente,object,DECISION IBM 15 07,
+cargo_atual_unidade,object,Decision São Paulo,
+cargo_atual_data_admissao,object,31-12-1969,
+cargo_atual_data_ultima_promocao,object,31-12-1969,
+cargo_atual_nome_superior_imediato,float64,,
+cargo_atual_email_superior_imediato,float64,,
