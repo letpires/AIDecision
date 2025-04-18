@@ -1,62 +1,78 @@
-# AIDecision
-Este projeto utiliza dados fornecidos pela Decision para análise e modelagem preditiva no processo de recrutamento e seleção.
+# AI Job Matching Platform
 
-## Documentação e Recursos
-- [Documentação do Projeto](https://docs.google.com/document/d/17XncF-K0MXrnaBrAUXjxubENoJXcsEpNCWhWKBPh0QM/edit?usp=drive_link)
-- [Drive do Datathon](https://drive.google.com/drive/folders/1dYdZww8Y72NdUYHk2G2jtSifQDa1Io_F?usp=drive_link)
+A platform that uses AI to match candidates with job opportunities, conduct automated interviews, and notify recruiters of potential matches via Telegram.
 
-## Estrutura do Projeto
+## Features
+
+- Job listings display
+- Candidate profile creation
+- Resume upload and parsing
+- AI-powered interview chat
+- Match scoring system
+- Telegram notifications for recruiters
+
+## Setup
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd <repository-name>
 ```
-AIDecision/
-├── dados/                    # Diretório com os arquivos de dados
-│   ├── applicants.json       # Dados dos candidatos
-│   ├── prospects.json        # Dados dos prospects
-│   └── vagas.json           # Dados das vagas
-├── notebooks/                # Jupyter notebooks de análise
-│   ├── eda.ipynb            # Análise exploratória inicial
-│   └── merge.ipynb          # Processo de merge das tabelas
-├── merged_data.csv          # Dataset final após merge
-└── dicionario_dados.csv     # Dicionário de dados com descrição das colunas
+
+2. Create a virtual environment and activate it:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-## Processo de Dados
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-### Merge das Tabelas
-O processo de merge é centralizado na tabela de prospects, que é a tabela principal para o modelo de classificação. O merge é realizado em duas etapas:
+4. Create a `.env` file in the root directory with the following variables:
+```
+OPENAI_API_KEY=your_openai_api_key
+TELEGRAM_BOT_TOKEN=your_telegram_bot_token
+TELEGRAM_CHAT_ID=your_telegram_chat_id
+```
 
-1. **Merge Prospects-Vagas**: 
-   - Usa o `id` do prospect para fazer o merge com o `id_vaga`
-   - Mantém todos os registros de prospects (left join)
-   - Adiciona informações sobre as vagas
+5. Create necessary directories:
+```bash
+mkdir -p app/static/{resumes,profiles}
+```
 
-2. **Merge com Applicants**:
-   - Usa o `candidato_codigo` do prospect para fazer o merge com o `id_candidato`
-   - Mantém todos os registros (left join)
-   - Adiciona informações detalhadas sobre os candidatos
+## Running the Application
 
-### Dicionário de Dados
-O arquivo `dicionario_dados.csv` contém informações detalhadas sobre todas as colunas do dataset final, incluindo:
-- Nome da coluna
-- Tipo de dados
-- Total de registros
-- Número de valores únicos
-- Quantidade e porcentagem de valores nulos
-- Exemplos de valores
+1. Start the Streamlit application:
+```bash
+streamlit run app/main.py
+```
 
-## Notebooks
+2. Open your browser and navigate to `http://localhost:8501`
 
-### merge.ipynb
-Este notebook realiza o processo de:
-1. Carregamento dos arquivos JSON
-2. Conversão para DataFrames
-3. Merge das três tabelas (prospects, vagas, applicants)
-4. Geração do dataset final em CSV
-5. Criação do dicionário de dados
+## Usage
 
-## Dados
-Os dados utilizados neste projeto foram fornecidos pela Decision e incluem:
-- Informações sobre candidatos
-- Dados de prospects
-- Detalhes das vagas
-- Histórico de candidaturas
-- Situações dos candidatos no processo seletivo
+1. **Job Listings**: Browse available job opportunities
+2. **Profile Setup**: Create your candidate profile and upload your resume
+3. **Interview Chat**: Participate in an AI-powered interview for specific positions
+4. **Match Results**: View your match scores and recommendations
+
+## Architecture
+
+- **Frontend**: Streamlit for the user interface
+- **AI Agent**: LangChain and LangGraph for interview and matching logic
+- **Notifications**: Telegram bot for recruiter alerts
+- **File Storage**: Local file system for resumes and profiles
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+MIT License

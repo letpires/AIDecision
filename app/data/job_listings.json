@@ -1,0 +1,55 @@
+{
+    "listings": [
+        {
+            "id": 1,
+            "title": "Desenvolvedor Python Sênior",
+            "company": "TechCorp Brasil",
+            "location": "São Paulo, SP",
+            "salary_range": "R$ 15.000 - R$ 20.000",
+            "description": "Procuramos um desenvolvedor Python sênior para liderar projetos de IA e machine learning.",
+            "requirements": [
+                "Python avançado",
+                "Experiência com frameworks de ML",
+                "Conhecimento em APIs REST",
+                "Git e CI/CD",
+                "Inglês técnico"
+            ],
+            "priority": true,
+            "category": "Desenvolvimento"
+        },
+        {
+            "id": 2,
+            "title": "Engenheiro de Dados",
+            "company": "DataTech",
+            "location": "Remoto",
+            "salary_range": "R$ 12.000 - R$ 18.000",
+            "description": "Engenheiro de dados para trabalhar com big data e pipelines de processamento.",
+            "requirements": [
+                "Apache Spark",
+                "Python ou Scala",
+                "SQL avançado",
+                "AWS ou GCP",
+                "Airflow"
+            ],
+            "priority": false,
+            "category": "Dados"
+        },
+        {
+            "id": 3,
+            "title": "Desenvolvedor Full Stack",
+            "company": "WebSolutions",
+            "location": "Rio de Janeiro, RJ",
+            "salary_range": "R$ 8.000 - R$ 12.000",
+            "description": "Desenvolvedor full stack para atuar em projetos web modernos.",
+            "requirements": [
+                "React.js",
+                "Node.js",
+                "TypeScript",
+                "MongoDB",
+                "Docker"
+            ],
+            "priority": true,
+            "category": "Desenvolvimento"
+        }
+    ]
+} 
