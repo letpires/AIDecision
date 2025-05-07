@@ -111,6 +111,48 @@ Acesse: [http://localhost:8501](http://localhost:8501)
 
 ---
 
+## **Deploy na Nuvem**
+
+### **Deploy Usando AWS Elastic Beanstalk**
+
+1. **Pré-requisitos**:
+   - Instale a AWS CLI e configure com suas credenciais.
+   - Certifique-se de ter um repositório ECR (Elastic Container Registry) configurado.
+
+2. **Push da Imagem para o ECR**:
+   ```bash
+   aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <account_id>.dkr.ecr.<region>.amazonaws.com
+   docker tag minha-api-fastapi:latest <account_id>.dkr.ecr.<region>.amazonaws.com/minha-api-fastapi:latest
+   docker push <account_id>.dkr.ecr.<region>.amazonaws.com/minha-api-fastapi:latest
+   ```
+
+3. **Criar a Aplicação no Elastic Beanstalk**:
+   - Acesse o console da AWS e vá até o Elastic Beanstalk.
+   - Crie uma nova aplicação com o nome desejado.
+   - Escolha a plataforma Docker e forneça o URI da imagem do ECR.
+
+4. **Configurar o Ambiente**:
+   - Configure a porta 8000 no Elastic Beanstalk.
+   - Faça o deploy e aguarde a inicialização.
+
+5. **Acessar o Endpoint da Aplicação**:
+   O Elastic Beanstalk fornecerá um domínio onde sua aplicação estará acessível.
+
+### **Deploy Usando uma Conta RENDER(Gratuito)**
+
+1. Crie uma conta no Render
+
+2. Crie um novo serviço Web
+  
+3. Escolha "Docker" como opção de deploy
+  
+4. Forneça o link do repositório do seu projeto (GitHub/GitLab)
+
+5. Configure variáveis de ambiente e publique!
+
+
+---
+
 ## 📚 Como Usar
 
 1. **Vagas** – Explore vagas disponíveis
