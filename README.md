@@ -1,15 +1,23 @@
 # 🎯 AI Job Matching Platform
 
-Uma plataforma de matching inteligente que usa IA para avaliar candidatos, conduzir entrevistas automatizadas e notificar recrutadores via Telegram.
+**Plataforma inteligente de recrutamento** que utiliza IA para analisar perfis de candidatos, conduzir entrevistas técnicas simuladas e gerar recomendações automáticas com envio de notificações via Telegram para recrutadores.
+
+---
+
+## 📌 Visão Geral do Projeto
+
+Este projeto tem como objetivo otimizar o processo de recrutamento utilizando Inteligência Artificial para realizar entrevistas simuladas com candidatos. A aplicação analisa o currículo, conduz uma conversa interativa baseada na vaga escolhida e entrega uma avaliação com base em critérios técnicos e comportamentais.
+
+---
 
 ## 🚀 Funcionalidades
 
-- 📋 Exibição de vagas
-- 🧑 Cadastro de perfil de candidatos
-- 📄 Upload e análise de currículos
-- 🤖 Entrevista automatizada com IA (OpenAI)
-- 📊 Sistema de pontuação e recomendação
-- 📲 Notificações via Telegram para recrutadores
+- 📋 Visualização de vagas cadastradas
+- 🧑 Criação de perfil de candidato com LinkedIn e GitHub
+- 📄 Upload e parsing automático de currículos (PDF)
+- 🤖 Entrevista técnica com agente de IA (OpenAI)
+- 📊 Avaliação com pontuação, pontos fortes e sugestões de melhoria
+- 📲 Notificação automática ao recrutador via Telegram
 
 ---
 
@@ -36,7 +44,7 @@ venv\Scripts\activate          # Windows
 pip install -r requirements.txt
 ```
 
-### 4. Crie um arquivo `.env` na raiz do projeto com:
+### 4. Configure variáveis de ambiente em `.env`
 
 ```env
 OPENAI_API_KEY=your_openai_api_key
@@ -44,7 +52,7 @@ TELEGRAM_BOT_TOKEN=your_telegram_bot_token
 TELEGRAM_CHAT_ID=your_telegram_chat_id
 ```
 
-### 5. Crie os diretórios necessários
+### 5. Crie os diretórios esperados
 
 ```bash
 mkdir -p uploads dados
@@ -54,18 +62,19 @@ mkdir -p uploads dados
 
 ## ▶️ Executando a Aplicação
 
+Execute o comando abaixo:
+
 ```bash
 streamlit run app/main.py
 ```
 
-Abra seu navegador e acesse:  
-[http://localhost:8501](http://localhost:8501)
+Acesse via navegador: [http://localhost:8501](http://localhost:8501)
 
 ---
 
 ## 🐳 Executando com Docker
 
-### 1. Crie um arquivo `Dockerfile` com o seguinte conteúdo:
+### 1. Crie o `Dockerfile`
 
 ```dockerfile
 FROM python:3.12-slim
@@ -87,7 +96,7 @@ EXPOSE 8501
 CMD ["streamlit", "run", "main.py"]
 ```
 
-### 2. Crie um arquivo `.env` com as variáveis de ambiente:
+### 2. Crie o arquivo `.env`
 
 ```env
 OPENAI_API_KEY=your_openai_api_key
@@ -95,70 +104,48 @@ TELEGRAM_BOT_TOKEN=your_telegram_bot_token
 TELEGRAM_CHAT_ID=your_telegram_chat_id
 ```
 
-### 3. Construa a imagem Docker:
+### 3. Construa e execute a imagem
 
 ```bash
 docker build -t ai-job-matcher .
-```
-
-### 4. Rode o container:
-
-```bash
 docker run -p 8501:8501 --env-file .env ai-job-matcher
 ```
 
-Acesse: [http://localhost:8501](http://localhost:8501)
-
 ---
 
-## **Deploy na Nuvem**
+## ☁️ Deploy em Produção
 
-### **Deploy Usando AWS Elastic Beanstalk**
+### Deploy na AWS Elastic Beanstalk (com Docker)
 
-1. **Pré-requisitos**:
-   - Instale a AWS CLI e configure com suas credenciais.
-   - Certifique-se de ter um repositório ECR (Elastic Container Registry) configurado.
+1. Faça push da imagem para o ECR:
 
-2. **Push da Imagem para o ECR**:
-   ```bash
-   aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <account_id>.dkr.ecr.<region>.amazonaws.com
-   docker tag minha-api-fastapi:latest <account_id>.dkr.ecr.<region>.amazonaws.com/minha-api-fastapi:latest
-   docker push <account_id>.dkr.ecr.<region>.amazonaws.com/minha-api-fastapi:latest
-   ```
+```bash
+aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <account_id>.dkr.ecr.<region>.amazonaws.com
+docker tag ai-job-matcher:latest <account_id>.dkr.ecr.<region>.amazonaws.com/ai-job-matcher:latest
+docker push <account_id>.dkr.ecr.<region>.amazonaws.com/ai-job-matcher:latest
+```
 
-3. **Criar a Aplicação no Elastic Beanstalk**:
-   - Acesse o console da AWS e vá até o Elastic Beanstalk.
-   - Crie uma nova aplicação com o nome desejado.
-   - Escolha a plataforma Docker e forneça o URI da imagem do ECR.
+2. Crie a aplicação no Elastic Beanstalk com plataforma Docker.
+3. Configure as variáveis de ambiente no painel.
+4. Faça o deploy usando a imagem do ECR.
 
-4. **Configurar o Ambiente**:
-   - Configure a porta 8000 no Elastic Beanstalk.
-   - Faça o deploy e aguarde a inicialização.
+### Deploy Gratuito com Render
 
-5. **Acessar o Endpoint da Aplicação**:
-   O Elastic Beanstalk fornecerá um domínio onde sua aplicação estará acessível.
-
-### **Deploy Usando uma Conta RENDER(Gratuito)**
-
-1. Crie uma conta no Render
-
-2. Crie um novo serviço Web
-  
-3. Escolha "Docker" como opção de deploy
-  
-4. Forneça o link do repositório do seu projeto (GitHub/GitLab)
-
-5. Configure variáveis de ambiente e publique!
-
+1. Crie uma conta em [https://render.com](https://render.com)
+2. Crie um novo Web Service e selecione Docker
+3. Conecte seu repositório GitHub
+4. Configure as variáveis de ambiente
+5. Clique em “Deploy”
 
 ---
 
 ## 📚 Como Usar
 
-1. **Vagas** – Explore vagas disponíveis
-2. **Perfil** – Preencha seu perfil e envie seu currículo
-3. **Entrevista** – Responda perguntas simuladas com IA
-4. **Resultado** – Veja sua pontuação e feedback automático
+1. **Escolha uma vaga** – veja as oportunidades disponíveis
+2. **Preencha seu perfil** – nome, e-mail, redes, currículo
+3. **Participe da entrevista técnica** – perguntas adaptadas à vaga
+4. **Receba sua avaliação final** – com pontuação e feedback completo
+5. **O recrutador é notificado** via Telegram
 
 ---
 
@@ -167,23 +154,25 @@ Acesse: [http://localhost:8501](http://localhost:8501)
 | Componente     | Tecnologia              |
 |----------------|--------------------------|
 | Interface      | Streamlit                |
-| Entrevista     | OpenAI + lógica local    |
-| Análise CV     | Parser de PDF            |
-| Notificações   | Telegram Bot             |
+| IA Entrevista  | OpenAI GPT (via SDK)     |
+| Parsing de CV  | PDFMiner, PyMuPDF        |
+| Notificação    | Telegram Bot API         |
+| Backend        | Lógica integrada no front (sem API separada) |
 | Armazenamento  | Sistema de arquivos local|
 
 ---
 
 ## 🤝 Contribuindo
 
-1. Fork este repositório
-2. Crie um novo branch: `feature/sua-feature`
-3. Commit suas alterações: `git commit -m 'feat: adiciona nova funcionalidade'`
-4. Push para o branch remoto
+1. Faça um fork do repositório
+2. Crie um branch: `feature/minha-feature`
+3. Commit suas alterações
+4. Push para seu fork
 5. Abra um Pull Request
 
 ---
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a Licença MIT.
+Distribuído sob a Licença MIT.  
+Consulte o arquivo `LICENSE` para mais detalhes.
