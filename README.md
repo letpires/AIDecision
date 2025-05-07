@@ -1,78 +1,147 @@
-# AI Job Matching Platform
+# 🎯 AI Job Matching Platform
 
-A platform that uses AI to match candidates with job opportunities, conduct automated interviews, and notify recruiters of potential matches via Telegram.
+Uma plataforma de matching inteligente que usa IA para avaliar candidatos, conduzir entrevistas automatizadas e notificar recrutadores via Telegram.
 
-## Features
+## 🚀 Funcionalidades
 
-- Job listings display
-- Candidate profile creation
-- Resume upload and parsing
-- AI-powered interview chat
-- Match scoring system
-- Telegram notifications for recruiters
+- 📋 Exibição de vagas
+- 🧑 Cadastro de perfil de candidatos
+- 📄 Upload e análise de currículos
+- 🤖 Entrevista automatizada com IA (OpenAI)
+- 📊 Sistema de pontuação e recomendação
+- 📲 Notificações via Telegram para recrutadores
 
-## Setup
+---
 
-1. Clone the repository:
+## 🛠️ Instalação Local
+
+### 1. Clone o repositório
+
 ```bash
 git clone <repository-url>
 cd <repository-name>
 ```
 
-2. Create a virtual environment and activate it:
+### 2. Crie e ative um ambiente virtual
+
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate         # Linux/macOS
+venv\Scripts\activate          # Windows
 ```
 
-3. Install dependencies:
+### 3. Instale as dependências
+
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Create a `.env` file in the root directory with the following variables:
-```
+### 4. Crie um arquivo `.env` na raiz do projeto com:
+
+```env
 OPENAI_API_KEY=your_openai_api_key
 TELEGRAM_BOT_TOKEN=your_telegram_bot_token
 TELEGRAM_CHAT_ID=your_telegram_chat_id
 ```
 
-5. Create necessary directories:
+### 5. Crie os diretórios necessários
+
 ```bash
-mkdir -p app/static/{resumes,profiles}
+mkdir -p uploads dados
 ```
 
-## Running the Application
+---
 
-1. Start the Streamlit application:
+## ▶️ Executando a Aplicação
+
 ```bash
 streamlit run app/main.py
 ```
 
-2. Open your browser and navigate to `http://localhost:8501`
+Abra seu navegador e acesse:  
+[http://localhost:8501](http://localhost:8501)
 
-## Usage
+---
 
-1. **Job Listings**: Browse available job opportunities
-2. **Profile Setup**: Create your candidate profile and upload your resume
-3. **Interview Chat**: Participate in an AI-powered interview for specific positions
-4. **Match Results**: View your match scores and recommendations
+## 🐳 Executando com Docker
 
-## Architecture
+### 1. Crie um arquivo `Dockerfile` com o seguinte conteúdo:
 
-- **Frontend**: Streamlit for the user interface
-- **AI Agent**: LangChain and LangGraph for interview and matching logic
-- **Notifications**: Telegram bot for recruiter alerts
-- **File Storage**: Local file system for resumes and profiles
+```dockerfile
+FROM python:3.12-slim
 
-## Contributing
+WORKDIR /app
 
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+COPY . /app
 
-## License
+RUN apt-get update && apt-get install -y build-essential && \
+    pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-MIT License
+ENV STREAMLIT_SERVER_HEADLESS=true
+ENV STREAMLIT_SERVER_PORT=8501
+ENV STREAMLIT_SERVER_ENABLECORS=false
+
+EXPOSE 8501
+
+CMD ["streamlit", "run", "main.py"]
+```
+
+### 2. Crie um arquivo `.env` com as variáveis de ambiente:
+
+```env
+OPENAI_API_KEY=your_openai_api_key
+TELEGRAM_BOT_TOKEN=your_telegram_bot_token
+TELEGRAM_CHAT_ID=your_telegram_chat_id
+```
+
+### 3. Construa a imagem Docker:
+
+```bash
+docker build -t ai-job-matcher .
+```
+
+### 4. Rode o container:
+
+```bash
+docker run -p 8501:8501 --env-file .env ai-job-matcher
+```
+
+Acesse: [http://localhost:8501](http://localhost:8501)
+
+---
+
+## 📚 Como Usar
+
+1. **Vagas** – Explore vagas disponíveis
+2. **Perfil** – Preencha seu perfil e envie seu currículo
+3. **Entrevista** – Responda perguntas simuladas com IA
+4. **Resultado** – Veja sua pontuação e feedback automático
+
+---
+
+## 🧱 Arquitetura
+
+| Componente     | Tecnologia              |
+|----------------|--------------------------|
+| Interface      | Streamlit                |
+| Entrevista     | OpenAI + lógica local    |
+| Análise CV     | Parser de PDF            |
+| Notificações   | Telegram Bot             |
+| Armazenamento  | Sistema de arquivos local|
+
+---
+
+## 🤝 Contribuindo
+
+1. Fork este repositório
+2. Crie um novo branch: `feature/sua-feature`
+3. Commit suas alterações: `git commit -m 'feat: adiciona nova funcionalidade'`
+4. Push para o branch remoto
+5. Abra um Pull Request
+
+---
+
+## 📄 Licença
+
+Este projeto está licenciado sob a Licença MIT.
