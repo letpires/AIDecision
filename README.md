@@ -169,9 +169,9 @@ volumes:
 ## ▶️ Executando com Docker Compose
 
 ```bash
-docker-compose up --build -d         # Subir os serviços
-docker-compose logs -f               # Acompanhar logs
-docker-compose down                  # Encerrar tudo
+docker compose up --build -d         # Subir os serviços
+docker compose logs -f               # Acompanhar logs
+docker compose down                  # Encerrar tudo
 ```
 
 ---

@@ -1,4 +1,4 @@
-ersion: '3.7'
+version: '3.7'
 
 services:
   app:
@@ -9,7 +9,7 @@ services:
     ports:
       - "8501:8501"
     env_file:
-      - .env
+      - app/.env
     volumes:
       - ./uploads:/app/uploads
       - ./dados:/app/dados
@@ -20,7 +20,7 @@ services:
     image: prom/prometheus
     container_name: prometheus
     volumes:
-      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      -  ./app/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
     ports:
       - "9090:9090"
     restart: always
