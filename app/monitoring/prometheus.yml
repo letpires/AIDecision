@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: 'ai_job_matcher'
+    static_configs:
+      - targets: ['app:9000']
