@@ -175,7 +175,20 @@ docker compose down                  # Encerrar tudo
 ```
 
 ---
+## ☁️ Acessar os Serviços
 
+| Serviço    | URL                                            | Usuário | Senha          |
+| ---------- | ---------------------------------------------- | ------- | -------------- |
+| Streamlit  | [http://localhost:8501](http://localhost:8501) | —       | —              |
+| Prometheus | [http://localhost:9090](http://localhost:9090) | —       | —              |
+| Grafana    | [http://localhost:3000](http://localhost:3000) | admin   | admin (padrão) |
+
+
+---
+
+
+
+---
 ## ☁️ Deploy com Render
 
 1. Crie conta em https://render.com
