@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/olirajun/Library/CloudStorage/OneDrive-Pessoal/FIAP_POS/Fase 5 - MLOps/Tech-Chalenge/AIDecision/app/venv"
+set -gx VIRTUAL_ENV "/Users/olirajun/Library/CloudStorage/OneDrive-Pessoal/FIAP_POS/Fase 5 - MLOps/Tech-Chalenge/AIDecision/AIDecision/app/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

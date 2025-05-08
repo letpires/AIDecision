@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/Users/olirajun/Library/CloudStorage/OneDrive-Pessoal/FIAP_POS/Fase 5 - MLOps/Tech-Chalenge/AIDecision/app/venv/bin/python3.12" "$0" "$@"
+'''exec' "/Users/olirajun/Library/CloudStorage/OneDrive-Pessoal/FIAP_POS/Fase 5 - MLOps/Tech-Chalenge/AIDecision/AIDecision/app/venv/bin/python3.12" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re

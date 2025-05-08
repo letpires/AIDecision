@@ -9,7 +9,7 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
-setenv VIRTUAL_ENV "/Users/olirajun/Library/CloudStorage/OneDrive-Pessoal/FIAP_POS/Fase 5 - MLOps/Tech-Chalenge/AIDecision/app/venv"
+setenv VIRTUAL_ENV "/Users/olirajun/Library/CloudStorage/OneDrive-Pessoal/FIAP_POS/Fase 5 - MLOps/Tech-Chalenge/AIDecision/AIDecision/app/venv"
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/bin:$PATH"
