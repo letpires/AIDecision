@@ -18,33 +18,24 @@ Este projeto tem como objetivo otimizar o processo de recrutamento utilizando In
 - 🤖 Entrevista técnica com agente de IA (OpenAI)
 - 📊 Avaliação com pontuação, pontos fortes e sugestões de melhoria
 - 📲 Notificação automática ao recrutador via Telegram
+- 📈 Monitoramento de métricas com Prometheus e Grafana
+- 🧪 Testes unitários e funcionais para garantir qualidade
 
 ---
 
 ## 🛠️ Instalação Local
 
-### 1. Clone o repositório
-
 ```bash
 git clone <repository-url>
 cd <repository-name>
-```
 
-### 2. Crie e ative um ambiente virtual
-
-```bash
 python -m venv venv
-source venv/bin/activate         # Linux/macOS
-venv\Scripts\activate          # Windows
-```
+source venv/bin/activate         # ou venv\Scripts\activate no Windows
 
-### 3. Instale as dependências
-
-```bash
 pip install -r requirements.txt
 ```
 
-### 4. Configure variáveis de ambiente em `.env`
+Crie um arquivo `.env` com:
 
 ```env
 OPENAI_API_KEY=your_openai_api_key
@@ -52,100 +43,155 @@ TELEGRAM_BOT_TOKEN=your_telegram_bot_token
 TELEGRAM_CHAT_ID=your_telegram_chat_id
 ```
 
-### 5. Crie os diretórios esperados
+Crie os diretórios necessários:
 
 ```bash
-mkdir -p uploads dados
+mkdir -p uploads dados logs
 ```
 
 ---
 
-## ▶️ Executando a Aplicação
-
-Execute o comando abaixo:
+## ▶️ Executando a Aplicação Localmente
 
 ```bash
 streamlit run app/main.py
 ```
 
-Acesse via navegador: [http://localhost:8501](http://localhost:8501)
+Abra [http://localhost:8501](http://localhost:8501) no navegador.
 
 ---
 
-## 🐳 Executando com Docker
+## 🧪 Executando Testes Unitários e Funcionais
 
-### 1. Crie o `Dockerfile`
+### Testes Unitários
+
+Executam validações de funções isoladas, como:
+- Análise de currículo (ResumeParser)
+- Avaliação de resposta (InterviewAgent)
+
+```bash
+pytest tests/unit/
+```
+
+### Testes Funcionais
+
+Simulam o fluxo completo da aplicação, incluindo:
+- Escolha de vaga
+- Preenchimento do perfil
+- Entrevista e resultado final
+
+```bash
+pytest tests/functional/
+```
+
+---
+
+## 📊 Monitoramento com Prometheus + Grafana
+
+1. A aplicação expõe métricas em http://localhost:9000/metrics
+2. Use docker-compose up -d para subir Prometheus e Grafana
+
+Acesse:
+- Prometheus: http://localhost:9090
+- Grafana: http://localhost:3000 (admin/admin)
+
+Importe o dashboard JSON:
+- `monitoring/ai_job_matcher_grafana_dashboard.json`
+
+---
+
+## 🐳 Dockerfile (localizado em app/Dockerfile)
 
 ```dockerfile
 FROM python:3.12-slim
-
 WORKDIR /app
-
 COPY . /app
 
 RUN apt-get update && apt-get install -y build-essential && \
-    pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
 ENV STREAMLIT_SERVER_HEADLESS=true
 ENV STREAMLIT_SERVER_PORT=8501
-ENV STREAMLIT_SERVER_ENABLECORS=false
 
 EXPOSE 8501
-
 CMD ["streamlit", "run", "main.py"]
-```
-
-### 2. Crie o arquivo `.env`
-
-```env
-OPENAI_API_KEY=your_openai_api_key
-TELEGRAM_BOT_TOKEN=your_telegram_bot_token
-TELEGRAM_CHAT_ID=your_telegram_chat_id
-```
-
-### 3. Construa e execute a imagem
-
-```bash
-docker build -t ai-job-matcher .
-docker run -p 8501:8501 --env-file .env ai-job-matcher
 ```
 
 ---
 
-## ☁️ Deploy em Produção
+## 🐳 Docker Compose (na raiz)
 
-### Deploy na AWS Elastic Beanstalk (com Docker)
+```yaml
+version: '3.7'
 
-1. Faça push da imagem para o ECR:
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: ai-job-matcher-app
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      - ./uploads:/app/uploads
+      - ./dados:/app/dados
+      - ./logs:/app/logs
+    restart: always
 
-```bash
-aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <account_id>.dkr.ecr.<region>.amazonaws.com
-docker tag ai-job-matcher:latest <account_id>.dkr.ecr.<region>.amazonaws.com/ai-job-matcher:latest
-docker push <account_id>.dkr.ecr.<region>.amazonaws.com/ai-job-matcher:latest
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    restart: always
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    depends_on:
+      - prometheus
+    restart: always
+
+volumes:
+  grafana-storage:
 ```
 
-2. Crie a aplicação no Elastic Beanstalk com plataforma Docker.
-3. Configure as variáveis de ambiente no painel.
-4. Faça o deploy usando a imagem do ECR.
+---
 
-### Deploy Gratuito com Render
+## ▶️ Executando com Docker Compose
 
-1. Crie uma conta em [https://render.com](https://render.com)
-2. Crie um novo Web Service e selecione Docker
-3. Conecte seu repositório GitHub
-4. Configure as variáveis de ambiente
-5. Clique em “Deploy”
+```bash
+docker-compose up --build -d         # Subir os serviços
+docker-compose logs -f               # Acompanhar logs
+docker-compose down                  # Encerrar tudo
+```
+
+---
+
+## ☁️ Deploy com Render
+
+1. Crie conta em https://render.com
+2. Conecte com GitHub
+3. Configure como serviço Web (Docker)
+4. Adicione variáveis de ambiente e publique
 
 ---
 
 ## 📚 Como Usar
 
-1. **Escolha uma vaga** – veja as oportunidades disponíveis
-2. **Preencha seu perfil** – nome, e-mail, redes, currículo
-3. **Participe da entrevista técnica** – perguntas adaptadas à vaga
-4. **Receba sua avaliação final** – com pontuação e feedback completo
-5. **O recrutador é notificado** via Telegram
+1. Escolha uma vaga
+2. Preencha seu perfil
+3. Participe da entrevista com IA
+4. Receba a avaliação
+5. Recrutador é notificado
 
 ---
 
@@ -155,24 +201,22 @@ docker push <account_id>.dkr.ecr.<region>.amazonaws.com/ai-job-matcher:latest
 |----------------|--------------------------|
 | Interface      | Streamlit                |
 | IA Entrevista  | OpenAI GPT (via SDK)     |
-| Parsing de CV  | PDFMiner, PyMuPDF        |
+| Parsing de CV  | PyMuPDF / PDFMiner       |
 | Notificação    | Telegram Bot API         |
-| Backend        | Lógica integrada no front (sem API separada) |
+| Métricas       | Prometheus + Grafana     |
 | Armazenamento  | Sistema de arquivos local|
 
 ---
 
 ## 🤝 Contribuindo
 
-1. Faça um fork do repositório
-2. Crie um branch: `feature/minha-feature`
-3. Commit suas alterações
-4. Push para seu fork
-5. Abra um Pull Request
+1. Fork o repositório
+2. Crie um branch `feature/nome-da-feature`
+3. Faça commits claros
+4. Abra um Pull Request
 
 ---
 
 ## 📄 Licença
 
-Distribuído sob a Licença MIT.  
-Consulte o arquivo `LICENSE` para mais detalhes.
+MIT License
