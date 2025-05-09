@@ -1,0 +1,152 @@
+{
+  "dashboard": {
+    "id": null,
+    "uid": null,
+    "title": "AI Job Matcher Dashboard",
+    "timezone": "browser",
+    "schemaVersion": 37,
+    "version": 1,
+    "refresh": "10s",
+    "panels": [
+      {
+        "type": "stat",
+        "title": "Total de Entrevistas",
+        "id": 1,
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "interviews_total",
+            "legendFormat": "",
+            "interval": "",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "none",
+            "decimals": 0
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "type": "stat",
+        "title": "Respostas Dadas",
+        "id": 2,
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "interview_answers_total",
+            "legendFormat": "",
+            "interval": "",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "none",
+            "decimals": 0
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 6,
+          "y": 0
+        }
+      },
+      {
+        "type": "stat",
+        "title": "Score Geral",
+        "id": 3,
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "interview_score_percent",
+            "legendFormat": "",
+            "interval": "",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "decimals": 0
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 0,
+          "y": 4
+        }
+      },
+      {
+        "type": "stat",
+        "title": "Score T\u00e9cnico",
+        "id": 4,
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "interview_technical_score_percent",
+            "legendFormat": "",
+            "interval": "",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "decimals": 0
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 6,
+          "y": 4
+        }
+      },
+      {
+        "type": "stat",
+        "title": "Score Comunica\u00e7\u00e3o",
+        "id": 5,
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "interview_communication_score_percent",
+            "legendFormat": "",
+            "interval": "",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "decimals": 0
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 0,
+          "y": 8
+        }
+      }
+    ],
+    "templating": {
+      "list": []
+    }
+  },
+  "overwrite": true
+}

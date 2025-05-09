@@ -9,3 +9,7 @@
 2025-05-08 17:51:00,439 [INFO] Prometheus iniciado na porta 9000
 2025-05-08 17:51:02,216 [WARNING] Porta 9000 já está em uso. Ignorando Prometheus.
 2025-05-08 17:51:02,254 [WARNING] Porta 9000 já está em uso. Ignorando Prometheus.
+2025-05-09 07:48:51,203 [INFO] Prometheus iniciado na porta 9000
+2025-05-09 07:48:53,497 [WARNING] Porta 9000 já está em uso.
+2025-05-09 07:48:53,537 [WARNING] Porta 9000 já está em uso.
+2025-05-09 10:53:15,494 [INFO] Prometheus iniciado na porta 9000

@@ -1,0 +1,102 @@
+{
+  "dashboard": {
+    "id": null,
+    "uid": "ai-job-matcher",
+    "title": "AI Job Matcher Dashboard",
+    "tags": [
+      "recruitment",
+      "monitoring",
+      "ai"
+    ],
+    "timezone": "browser",
+    "schemaVersion": 30,
+    "version": 1,
+    "refresh": "5s",
+    "panels": [
+      {
+        "type": "stat",
+        "title": "Total de Entrevistas",
+        "id": 1,
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "interviews_total",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "none",
+            "color": {
+              "mode": "value"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "orange",
+                  "value": 50
+                },
+                {
+                  "color": "red",
+                  "value": 100
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "options": {
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "orientation": "auto",
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto"
+        }
+      },
+      {
+        "type": "graph",
+        "title": "Distribui\u00e7\u00e3o de Pontua\u00e7\u00f5es",
+        "id": 2,
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "avg(score_percentage)",
+            "legendFormat": "Pontua\u00e7\u00e3o Geral",
+            "refId": "A"
+          },
+          {
+            "expr": "avg(technical_score)",
+            "legendFormat": "T\u00e9cnica",
+            "refId": "B"
+          },
+          {
+            "expr": "avg(communication_score)",
+            "legendFormat": "Comunica\u00e7\u00e3o",
+            "refId": "C"
+          }
+        ],
+        "gridPos": {
+          "x": 0,
+          "y": 0,
+          "w": 24,
+          "h": 9
+        }
+      }
+    ]
+  },
+  "overwrite": true
+}

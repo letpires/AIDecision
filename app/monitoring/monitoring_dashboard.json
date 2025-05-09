@@ -1,0 +1,216 @@
+{
+  "id": null,
+  "uid": "2d91a3fa", 
+  "title": "Monitoramento - AI Job Matcher",
+  "description": "",
+  "tags": [],
+  "timezone": "browser",
+  "schemaVersion": 37,
+  "version": 1,
+  "refresh": "5s",
+  "style": "dark",
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "templating": {
+    "list": []
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "stat",
+      "title": "Total de Entrevistas",
+      "datasource": "${DS_PROMETHEUS}",
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 4 },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 0,
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "reduceOptions": {
+          "calcs": [ "lastNotNull" ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value"
+      },
+      "targets": [
+        {
+          "expr": "interviews_total",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "gauge",
+      "title": "Acurácia",
+      "datasource": "${DS_PROMETHEUS}",
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 4 },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 1,
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red",    "value": null },
+              { "color": "yellow", "value": 50 },
+              { "color": "green",  "value": 80 }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [ "lastNotNull" ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "orientation": "auto"
+      },
+      "targets": [
+        {
+          "expr": "(interview_score_total / interviews_total) * 100",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "Média da Pontuação Geral",
+      "datasource": "${DS_PROMETHEUS}",
+      "gridPos": { "x": 0, "y": 4, "w": 8, "h": 8 },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 1,
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom",
+          "calcs": [ "lastNotNull" ]
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "drawStyle": "line",
+        "lineWidth": 2,
+        "fillOpacity": 10,
+        "pointSize": 0,
+        "showPoints": "never"
+      },
+      "targets": [
+        {
+          "expr": "interview_score_total / interviews_total",
+          "refId": "A",
+          "legendFormat": "Pontuação Geral"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "Média da Pontuação Técnica",
+      "datasource": "${DS_PROMETHEUS}",
+      "gridPos": { "x": 8, "y": 4, "w": 8, "h": 8 },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 1,
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom",
+          "calcs": [ "lastNotNull" ]
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "drawStyle": "line",
+        "lineWidth": 2,
+        "fillOpacity": 10,
+        "pointSize": 0,
+        "showPoints": "never"
+      },
+      "targets": [
+        {
+          "expr": "interview_technical_score_total / interviews_total",
+          "refId": "A",
+          "legendFormat": "Pontuação Técnica"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Média da Pontuação de Comunicação",
+      "datasource": "${DS_PROMETHEUS}",
+      "gridPos": { "x": 16, "y": 4, "w": 8, "h": 8 },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 1,
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom",
+          "calcs": [ "lastNotNull" ]
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "drawStyle": "line",
+        "lineWidth": 2,
+        "fillOpacity": 10,
+        "pointSize": 0,
+        "showPoints": "never"
+      },
+      "targets": [
+        {
+          "expr": "interview_communication_score_total / interviews_total",
+          "refId": "A",
+          "legendFormat": "Pontuação Comunicação"
+        }
+      ]
+    }
+  ]
+}
