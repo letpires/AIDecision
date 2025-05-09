@@ -28,6 +28,12 @@ def get_or_create_metric(metric_cls, name, documentation):
 
 interview_counter = get_or_create_metric(Counter, "interviews_total", "Total de entrevistas iniciadas")
 answer_counter = get_or_create_metric(Counter, "interview_answers_total", "Total de respostas dadas")
+
+# **Novos counters para acumular scores**
+score_total_counter = get_or_create_metric(Counter, "interview_score_total", "Soma acumulada das pontuações gerais")
+tech_score_total_counter = get_or_create_metric(Counter, "interview_technical_score_total", "Soma acumulada das pontuações técnicas")
+comm_score_total_counter = get_or_create_metric(Counter, "interview_communication_score_total", "Soma acumulada das pontuações de comunicação")
+
 score_gauge = get_or_create_metric(Gauge, "evaluation_score", "Pontuação geral da avaliação")
 technical_gauge = get_or_create_metric(Gauge, "evaluation_technical_score", "Pontuação técnica")
 communication_gauge = get_or_create_metric(Gauge, "evaluation_communication_score", "Pontuação de comunicação")
@@ -166,6 +172,17 @@ def interview_section():
                 score_gauge.set(evaluation["score"])
                 technical_gauge.set(evaluation["technical_score"])
                 communication_gauge.set(evaluation["communication_score"])
+                # após processar result['status']=="completed"
+                evaluation = result['evaluation']
+                score_gauge.set(evaluation["score"])
+                technical_gauge.set(evaluation["technical_score"])
+                communication_gauge.set(evaluation["communication_score"])
+
+                # **Incrementa os totals** para o Grafana calcular médias
+                score_total_counter.inc(evaluation["score"])
+                tech_score_total_counter.inc(evaluation["technical_score"])
+                comm_score_total_counter.inc(evaluation["communication_score"])
+
                 try:
                     TelegramNotifier().notify_new_candidate(
                         st.session_state.profile,

@@ -13,3 +13,221 @@
 2025-05-09 07:48:53,497 [WARNING] Porta 9000 já está em uso.
 2025-05-09 07:48:53,537 [WARNING] Porta 9000 já está em uso.
 2025-05-09 10:53:15,494 [INFO] Prometheus iniciado na porta 9000
+2025-05-09 13:57:17,389 [INFO] Prometheus iniciado na porta 9000
+2025-05-09 13:57:19,080 [WARNING] Porta 9000 já está em uso.
+2025-05-09 13:57:19,144 [WARNING] Porta 9000 já está em uso.
+2025-05-09 13:57:45,228 [WARNING] Porta 9000 já está em uso.
+2025-05-09 13:57:46,639 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-05-09 13:57:46,688 [WARNING] Porta 9000 já está em uso.
+2025-05-09 13:57:47,766 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-05-09 13:57:48,112 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 13:57:48,113 [INFO] Retrying request to /chat/completions in 0.396246 seconds
+2025-05-09 13:57:48,830 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 13:57:48,831 [INFO] Retrying request to /chat/completions in 0.823549 seconds
+2025-05-09 13:57:49,900 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:04:54,681 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:04:56,747 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:04:56,796 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:05:21,113 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:05:21,706 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-05-09 14:05:21,753 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:05:22,818 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-05-09 14:05:23,799 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:05:34,167 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:05:35,114 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:05:35,184 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:05:47,194 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:05:48,219 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:05:48,269 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:05:58,596 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:05:59,697 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:05:59,744 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:06:09,629 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:06:10,735 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:06:10,796 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:06:16,445 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:06:16,791 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:06:16,792 [INFO] Retrying request to /chat/completions in 20.000000 seconds
+2025-05-09 14:06:39,960 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:06:40,807 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:07:10,248 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:07:10,303 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:08:34,932 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:08:35,019 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:08:56,748 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:08:57,885 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-05-09 14:08:57,933 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:08:58,555 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-05-09 14:08:59,604 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:09:02,610 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:09:03,692 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:09:03,761 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:09:06,693 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:09:07,717 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:09:07,766 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:09:08,980 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:09:09,228 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:09:09,229 [INFO] Retrying request to /chat/completions in 20.000000 seconds
+2025-05-09 14:09:30,908 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:09:30,973 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:09:44,715 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:09:46,592 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:09:46,639 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:09:48,462 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:09:48,708 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:09:48,709 [INFO] Retrying request to /chat/completions in 20.000000 seconds
+2025-05-09 14:10:11,397 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:10:12,270 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:22:46,432 [INFO] Prometheus iniciado na porta 9000
+2025-05-09 14:23:41,536 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:23:41,641 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:24:45,482 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:24:46,638 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:24:46,640 [INFO] Retrying request to /chat/completions in 0.393725 seconds
+2025-05-09 14:24:47,449 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:24:47,450 [INFO] Retrying request to /chat/completions in 0.827709 seconds
+2025-05-09 14:24:48,681 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:24:48,776 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:24:49,910 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-05-09 14:24:51,145 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:25:24,359 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:25:25,499 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:25:25,545 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:25:38,908 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:25:39,986 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:25:40,031 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:25:46,341 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:25:47,769 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:25:47,816 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:25:54,710 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:25:55,717 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:25:55,765 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:25:58,179 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:26:01,353 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:30:11,276 [INFO] Prometheus iniciado na porta 9000
+2025-05-09 14:30:12,729 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:30:12,781 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:30:56,031 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:30:57,225 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:30:57,226 [INFO] Retrying request to /chat/completions in 0.498701 seconds
+2025-05-09 14:30:58,158 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:30:58,159 [INFO] Retrying request to /chat/completions in 0.808974 seconds
+2025-05-09 14:30:59,373 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:30:59,436 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:31:00,297 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:31:00,298 [INFO] Retrying request to /chat/completions in 0.413686 seconds
+2025-05-09 14:31:01,102 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:31:01,103 [INFO] Retrying request to /chat/completions in 0.772331 seconds
+2025-05-09 14:31:02,214 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:31:03,086 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:31:10,710 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:31:11,924 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:31:11,972 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:31:12,927 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:31:13,837 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:31:13,884 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:31:15,793 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:31:16,912 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:31:16,959 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:31:18,190 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:31:19,228 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:31:19,276 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:31:20,643 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:31:24,356 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:31:25,244 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:32:27,708 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:32:27,764 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:32:28,873 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:32:28,923 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:33:00,267 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:33:01,397 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:33:01,398 [INFO] Retrying request to /chat/completions in 0.387487 seconds
+2025-05-09 14:33:02,157 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:33:02,158 [INFO] Retrying request to /chat/completions in 0.911327 seconds
+2025-05-09 14:33:03,408 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:33:03,461 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:33:03,978 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:33:03,978 [INFO] Retrying request to /chat/completions in 0.404717 seconds
+2025-05-09 14:33:04,709 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:33:04,709 [INFO] Retrying request to /chat/completions in 0.848611 seconds
+2025-05-09 14:33:05,843 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 14:33:06,715 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:33:11,701 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:33:12,643 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:33:12,693 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:33:14,036 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:33:15,309 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:33:15,356 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:33:16,920 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:33:18,563 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:33:18,609 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:33:19,588 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:33:20,599 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:33:20,651 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:33:21,773 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:33:24,256 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 14:33:25,238 [WARNING] Porta 9000 já está em uso.
+2025-05-09 14:42:21,939 [INFO] Prometheus iniciado na porta 9000
+2025-05-09 15:04:07,761 [INFO] Prometheus iniciado na porta 9000
+2025-05-09 15:38:05,246 [WARNING] Porta 9000 já está em uso.
+2025-05-09 15:38:05,396 [WARNING] Porta 9000 já está em uso.
+2025-05-09 15:39:00,115 [WARNING] Porta 9000 já está em uso.
+2025-05-09 15:39:01,369 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 15:39:01,372 [INFO] Retrying request to /chat/completions in 0.377469 seconds
+2025-05-09 15:39:02,180 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 15:39:02,181 [INFO] Retrying request to /chat/completions in 0.880999 seconds
+2025-05-09 15:39:03,358 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 15:39:03,420 [WARNING] Porta 9000 já está em uso.
+2025-05-09 15:39:04,498 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 15:39:04,499 [INFO] Retrying request to /chat/completions in 0.398701 seconds
+2025-05-09 15:39:05,273 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 15:39:05,274 [INFO] Retrying request to /chat/completions in 0.909283 seconds
+2025-05-09 15:39:06,505 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 15:39:07,520 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 15:39:15,868 [WARNING] Porta 9000 já está em uso.
+2025-05-09 15:39:17,107 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 15:39:17,154 [WARNING] Porta 9000 já está em uso.
+2025-05-09 15:39:18,787 [WARNING] Porta 9000 já está em uso.
+2025-05-09 15:39:19,771 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 15:39:19,820 [WARNING] Porta 9000 já está em uso.
+2025-05-09 15:39:20,837 [WARNING] Porta 9000 já está em uso.
+2025-05-09 15:39:21,654 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 15:39:21,688 [WARNING] Porta 9000 já está em uso.
+2025-05-09 15:39:22,624 [WARNING] Porta 9000 já está em uso.
+2025-05-09 15:39:23,864 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 15:39:23,912 [WARNING] Porta 9000 já está em uso.
+2025-05-09 15:39:25,249 [WARNING] Porta 9000 já está em uso.
+2025-05-09 15:39:27,960 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 15:39:28,817 [WARNING] Porta 9000 já está em uso.
+2025-05-09 16:05:22,728 [WARNING] Porta 9000 já está em uso.
+2025-05-09 16:05:22,826 [WARNING] Porta 9000 já está em uso.
+2025-05-09 16:05:24,117 [WARNING] Porta 9000 já está em uso.
+2025-05-09 16:05:24,163 [WARNING] Porta 9000 já está em uso.
+2025-05-09 16:05:42,481 [WARNING] Porta 9000 já está em uso.
+2025-05-09 16:05:43,728 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 16:05:43,729 [INFO] Retrying request to /chat/completions in 0.494016 seconds
+2025-05-09 16:05:44,689 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 16:05:44,690 [INFO] Retrying request to /chat/completions in 0.794605 seconds
+2025-05-09 16:05:45,838 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 16:05:45,885 [WARNING] Porta 9000 já está em uso.
+2025-05-09 16:05:47,016 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 16:05:47,017 [INFO] Retrying request to /chat/completions in 0.456419 seconds
+2025-05-09 16:05:47,912 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 16:05:47,913 [INFO] Retrying request to /chat/completions in 0.806711 seconds
+2025-05-09 16:05:49,046 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-05-09 16:05:49,972 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 16:05:56,131 [WARNING] Porta 9000 já está em uso.
+2025-05-09 16:05:57,241 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 16:05:57,290 [WARNING] Porta 9000 já está em uso.
+2025-05-09 16:05:58,818 [WARNING] Porta 9000 já está em uso.
+2025-05-09 16:05:59,698 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 16:05:59,744 [WARNING] Porta 9000 já está em uso.
+2025-05-09 16:06:00,415 [WARNING] Porta 9000 já está em uso.
+2025-05-09 16:06:01,646 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 16:06:01,693 [WARNING] Porta 9000 já está em uso.
+2025-05-09 16:06:02,867 [WARNING] Porta 9000 já está em uso.
+2025-05-09 16:06:03,896 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 16:06:03,942 [WARNING] Porta 9000 já está em uso.
+2025-05-09 16:06:04,967 [WARNING] Porta 9000 já está em uso.
+2025-05-09 16:06:08,709 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 16:06:09,688 [WARNING] Porta 9000 já está em uso.

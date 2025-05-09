@@ -8,6 +8,7 @@ services:
     container_name: ai-job-matcher-app
     ports:
       - "8501:8501"
+      - "9000:9000"
     env_file:
       - app/.env
     volumes:
@@ -17,24 +18,31 @@ services:
     restart: always
 
   prometheus:
-    image: prom/prometheus
+    image: prom/prometheus:latest
     container_name: prometheus
     volumes:
-      -  ./app/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./app/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
     ports:
-      - "9090:9090"
+      - "9090:9090"   # Prometheus UI e endpoint de /metrics padrão
     restart: always
-
+    depends_on:
+      - app
+  
+  
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana:latest
     container_name: grafana
-    ports:
-      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
     volumes:
       - grafana-storage:/var/lib/grafana
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+    ports:
+      - "3000:3000"   # Grafana UI
+    restart: always
     depends_on:
       - prometheus
-    restart: always
-
 volumes:
   grafana-storage:

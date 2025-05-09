@@ -185,7 +185,34 @@ docker compose down                  # Encerrar tudo
 
 
 ---
+## 🚀 Importando o Dashboard no Grafana
 
+1. Baixe o arquivo JSON do dashboard:
+
+```bash
+wget -O monitoring/ai_job_matcher_dashboard.json \
+  https://<seu-repo>/monitoring/ai_job_matcher_dashboard_fixed.json
+```
+
+2. Acesse o Grafana em http://localhost:3000
+
+3. No menu lateral, clique em “+” → Import
+
+4. No campo “Upload JSON file or Grafana.com Dashboard”, selecione monitoring/ai_job_matcher_dashboard.json
+
+5. Garanta que o campo Name seja preenchido automaticamente como “Monitoramento - AI Job Matcher”
+
+6. elecione a Data source chamada Prometheus
+
+7. Clique em Import
+
+Você verá agora:
+
+Total de Entrevistas (stat panel)
+Acurácia (gauge panel)
+Média da Pontuação Geral (time series)
+Média da Pontuação Técnica (time series)
+Média da Pontuação de Comunicação (time series)
 
 
 ---
