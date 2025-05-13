@@ -198,7 +198,7 @@ wget -O monitoring/ai_job_matcher_dashboard.json \
 
 3. No menu lateral, clique em “+” → Import
 
-4. No campo “Upload JSON file or Grafana.com Dashboard”, selecione monitoring/ai_job_matcher_dashboard.json
+4. No campo “Upload JSON file or Grafana.com Dashboard”, selecione monitoring/monitoring_dashboard.json
 
 5. Garanta que o campo Name seja preenchido automaticamente como “Monitoramento - AI Job Matcher”
 
