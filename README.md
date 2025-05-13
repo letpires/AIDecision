@@ -191,7 +191,7 @@ docker compose down                  # Encerrar tudo
 
 ```bash
 wget -O monitoring/ai_job_matcher_dashboard.json \
-  https://<seu-repo>/monitoring/ai_job_matcher_dashboard_fixed.json
+  https://<seu-repo>/monitoring/monitoring_dashboard.json
 ```
 
 2. Acesse o Grafana em http://localhost:3000
