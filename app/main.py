@@ -1,10 +1,9 @@
 import streamlit as st
+import pandas as pd 
 import json
 import os
-import logging
 from datetime import datetime
 from pathlib import Path
-from prometheus_client import Counter, Gauge, start_http_server, REGISTRY
 from config import (
     DATA_DIR, RESUMES_DIR, SUPPORTED_FILE_TYPES,
     JOB_CATEGORIES, MINIMUM_SCORE_FOR_NOTIFICATION
@@ -12,58 +11,22 @@ from config import (
 from interview.interview_agent import InterviewAgent
 from utils.telegram_notifier import TelegramNotifier
 from utils.resume_parser import ResumeParser
+# from utils.processing import BooleanConverter
 
-# Configuração de logging
-logging.basicConfig(
-    filename="logs/app.log",
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s"
-)
+from utils.ml_matcher import gerar_features_com_llm, montar_features, score_ml
 
-def get_or_create_metric(metric_cls, name, documentation):
-    try:
-        return REGISTRY._names_to_collectors[name]
-    except KeyError:
-        return metric_cls(name, documentation)
 
-interview_counter = get_or_create_metric(Counter, "interviews_total", "Total de entrevistas iniciadas")
-answer_counter = get_or_create_metric(Counter, "interview_answers_total", "Total de respostas dadas")
-
-# **Novos counters para acumular scores**
-score_total_counter = get_or_create_metric(Counter, "interview_score_total", "Soma acumulada das pontuações gerais")
-tech_score_total_counter = get_or_create_metric(Counter, "interview_technical_score_total", "Soma acumulada das pontuações técnicas")
-comm_score_total_counter = get_or_create_metric(Counter, "interview_communication_score_total", "Soma acumulada das pontuações de comunicação")
-
-score_gauge = get_or_create_metric(Gauge, "evaluation_score", "Pontuação geral da avaliação")
-technical_gauge = get_or_create_metric(Gauge, "evaluation_technical_score", "Pontuação técnica")
-communication_gauge = get_or_create_metric(Gauge, "evaluation_communication_score", "Pontuação de comunicação")
-
-# Iniciar Prometheus com verificação de porta
-def start_prometheus_safe():
-    import socket
-    import errno
-    try:
-        test_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        test_socket.bind(("0.0.0.0", 9000))
-        test_socket.close()
-        start_http_server(9000)
-        logging.info("Prometheus iniciado na porta 9000")
-    except socket.error as e:
-        if e.errno == errno.EADDRINUSE:
-            logging.warning("Porta 9000 já está em uso.")
-        else:
-            logging.error(f"Erro ao iniciar Prometheus: {e}")
-
-start_prometheus_safe()
-
+# Diretório base do projeto (2 níveis acima do arquivo atual)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Configuração da página
 st.set_page_config(
     page_title="AI Job Matcher",
     page_icon="🎯",
     layout="wide"
 )
 
+# Inicialização do estado da sessão
 if 'interview_agent' not in st.session_state:
     st.session_state.interview_agent = InterviewAgent()
 if 'resume_parser' not in st.session_state:
@@ -80,163 +43,287 @@ if 'evaluation' not in st.session_state:
     st.session_state.evaluation = None
 
 def get_example_listings():
-    return [{
-        "id": "dev001",
-        "title": "Desenvolvedor Python Sênior",
-        "company": "TechCorp Brasil",
-        "location": "São Paulo, SP",
-        "salary_range": "R$ 15.000 - R$ 18.000",
-        "description": "Desenvolvimento de soluções de IA.",
-        "requirements": ["Python", "ML", "FastAPI", "Docker", "Inglês"]
-    }]
+    """Retorna uma lista de vagas de exemplo"""
+    return [
+        {
+            "id": "dev001",
+            "title": "Desenvolvedor Python Sênior",
+            "company": "TechCorp Brasil",
+            "location": "São Paulo, SP (Híbrido)",
+            "salary_range": "R$ 15.000 - R$ 18.000",
+            "description": "Procuramos um desenvolvedor Python sênior para atuar no desenvolvimento de soluções de IA e machine learning. O profissional irá trabalhar com tecnologias modernas como FastAPI, PyTorch e Docker.",
+            "requirements": [
+                "5+ anos de experiência com Python",
+                "Experiência com frameworks de ML (PyTorch, TensorFlow)",
+                "Conhecimento em APIs REST e FastAPI",
+                "Experiência com Docker e containers",
+                "Inglês avançado"
+            ]
+        },
+        {
+            "id": "data001",
+            "title": "Cientista de Dados",
+            "company": "DataInsights",
+            "location": "Remoto",
+            "salary_range": "R$ 12.000 - R$ 15.000",
+            "description": "Buscamos cientista de dados para desenvolver modelos preditivos e soluções de análise avançada. Você irá trabalhar com grandes volumes de dados e implementar soluções de machine learning.",
+            "requirements": [
+                "Mestrado ou Doutorado em área relacionada",
+                "Experiência com Python e R",
+                "Conhecimento em SQL e bancos de dados",
+                "Experiência com bibliotecas de ML",
+                "Boa comunicação"
+            ]
+        }
+    ]
 
 def load_job_listings():
+    """Carrega as vagas do arquivo JSON"""
     try:
-        path = BASE_DIR / 'dados' / 'vagas.json'
-        if not path.exists():
+        vagas_path = BASE_DIR / 'dados' / 'vagas.json'
+        if not vagas_path.exists():
+            st.info("Usando vagas de exemplo para demonstração")
             return get_example_listings()
-        with open(path, 'r', encoding='utf-8') as f:
+            
+        with open(vagas_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
-            return data.get('vagas', []) if isinstance(data, dict) else data
+            if isinstance(data, dict):
+                vagas = data.get('vagas', [])
+            else:
+                vagas = data
+                
+            if not vagas:
+                st.info("Nenhuma vaga encontrada no arquivo. Usando vagas de exemplo.")
+                return get_example_listings()
+                
+            return vagas
+            
     except Exception as e:
-        logging.error(f"Erro ao carregar vagas: {e}")
+        st.info("Erro ao carregar vagas do arquivo. Usando vagas de exemplo.")
         return get_example_listings()
 
 def save_resume(uploaded_file):
-    if uploaded_file:
+    """Salva o currículo enviado e retorna o caminho"""
+    if uploaded_file is not None:
+        # Criar diretório se não existir
         os.makedirs('uploads', exist_ok=True)
-        filename = f"resume_{datetime.now().strftime('%Y%m%d_%H%M%S')}.{uploaded_file.name.split('.')[-1]}"
-        path = os.path.join("uploads", filename)
-        with open(path, "wb") as f:
+        
+        # Gerar nome único para o arquivo
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        file_extension = uploaded_file.name.split('.')[-1]
+        filename = f'resume_{timestamp}.{file_extension}'
+        filepath = os.path.join('uploads', filename)
+        
+        # Salvar arquivo
+        with open(filepath, 'wb') as f:
             f.write(uploaded_file.getbuffer())
-        return path
+            
+        return filepath
     return None
 
 def display_job_card(job):
+    """Exibe o card de uma vaga"""
     with st.container():
         st.markdown(f"""
-        <div style='padding: 20px; border: 1px solid #ddd; border-radius: 10px;'>
-            <h4>{job['title']}</h4>
-            <p><b>Empresa:</b> {job['company']} — {job['location']}</p>
-            <p><b>Salário:</b> {job['salary_range']}</p>
-            <p>{job['description']}</p>
+        <div style='padding: 20px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 20px;'>
+            <h3>{job.get('title', 'Sem título')}</h3>
+            <p><strong>Empresa:</strong> {job.get('company', 'Não informada')}</p>
+            <p><strong>Local:</strong> {job.get('location', 'Não informado')}</p>
+            <p><strong>Faixa Salarial:</strong> {job.get('salary_range', 'Não informada')}</p>
+            <p>{job.get('description', 'Sem descrição')}</p>
+            
+            <details>
+                <summary>Requisitos</summary>
+                <ul>
+                    {''.join([f"<li>{req}</li>" for req in job.get('requirements', [])])}
+                </ul>
+            </details>
         </div>
         """, unsafe_allow_html=True)
-        if st.button("Candidatar-se", key=job['id']):
+        
+        if st.button("Candidatar-se", key=f"apply_{job.get('id', '')}"):
             st.session_state.selected_job = job
             st.session_state.current_step = 'profile'
             st.rerun()
 
 def profile_section():
-    st.header("Perfil")
+    """Seção de perfil do candidato"""
+    st.header("Perfil do Candidato")
+    
     with st.form("profile_form"):
-        nome = st.text_input("Nome", value=st.session_state.profile.get("nome", ""))
-        email = st.text_input("Email", value=st.session_state.profile.get("email", ""))
-        linkedin = st.text_input("LinkedIn", value=st.session_state.profile.get("linkedin", ""))
-        github = st.text_input("GitHub", value=st.session_state.profile.get("github", ""))
-        file = st.file_uploader("Currículo (PDF)", type=["pdf"])
-
+        nome = st.text_input("Nome completo", value=st.session_state.profile.get('nome', ''))
+        email = st.text_input("E-mail", value=st.session_state.profile.get('email', ''))
+        telefone = st.text_input("Telefone", value=st.session_state.profile.get('telefone', ''))
+        linkedin = st.text_input("LinkedIn URL", value=st.session_state.profile.get('linkedin', ''))
+        github = st.text_input("GitHub URL", value=st.session_state.profile.get('github', ''))
+        
+        uploaded_file = st.file_uploader("Envie seu currículo (PDF)", type=['pdf'])
+        
         if st.form_submit_button("Continuar"):
-            path = save_resume(file)
+            # Salvar currículo
+            resume_path = save_resume(uploaded_file) if uploaded_file else None
+            
+            # Atualizar perfil
             st.session_state.profile = {
-                "nome": nome, "email": email, "linkedin": linkedin,
-                "github": github, "resume_path": path
+                'nome': nome,
+                'email': email,
+                'telefone': telefone,
+                'linkedin': linkedin,
+                'github': github,
+                'resume_path': resume_path
             }
-            if path:
-                try:
-                    data = st.session_state.resume_parser.analyze_resume(path)
-                    st.session_state.profile.update(data)
-                except Exception as e:
-                    logging.warning(f"Erro ao analisar currículo: {e}")
-            st.session_state.current_step = "interview"
+
+            # print(st.session_state.profile)
+            
+            # if resume_path:
+            #     # Analisar currículo
+                # resume_data = st.session_state.resume_parser.analyze_resume(resume_path)
+            #     print(resume_data)
+            #     st.session_state.profile.update(resume_data)
+
+
+
+            # Salvar perfil em arquivo JSON
+            os.makedirs("/Users/leticiapires/Desktop/AIDecision/app/static/profiles", exist_ok=True)
+            profile_path = os.path.join("/Users/leticiapires/Desktop/AIDecision/app/static/profiles", f"{nome.replace(' ', '_').lower()}.json")
+            # with open(profile_path, "w", encoding="utf-8") as f:
+            #     json.dump(st.session_state.profile, f, ensure_ascii=False, indent=2)
+            
+            st.session_state.current_step = 'interview'
             st.rerun()
 
 def interview_section():
+    """Seção de entrevista"""
     st.header("Entrevista Técnica")
-    if "current_question" not in st.session_state:
-        question = st.session_state.interview_agent.start_interview(
-            st.session_state.profile, st.session_state.selected_job)
-        st.session_state.current_question = question
-        interview_counter.inc()
 
+    print(st.session_state.profile)
+    
+    if 'current_question' not in st.session_state:
+        # Iniciar entrevista
+        question = st.session_state.interview_agent.start_interview(
+            st.session_state.profile,
+            st.session_state.selected_job
+        )
+        st.session_state.current_question = question
+    
     st.write(st.session_state.current_question)
+    
     with st.form("interview_form"):
         answer = st.text_area("Sua resposta:")
         if st.form_submit_button("Enviar"):
-            answer_counter.inc()
             result = st.session_state.interview_agent.process_answer(answer)
+            
             if result['status'] == 'completed':
-                st.session_state.evaluation = result['evaluation']
                 st.session_state.interview_completed = True
-                evaluation = st.session_state.evaluation
-                score_gauge.set(evaluation["score"])
-                technical_gauge.set(evaluation["technical_score"])
-                communication_gauge.set(evaluation["communication_score"])
-                # após processar result['status']=="completed"
-                evaluation = result['evaluation']
-                score_gauge.set(evaluation["score"])
-                technical_gauge.set(evaluation["technical_score"])
-                communication_gauge.set(evaluation["communication_score"])
+                st.session_state.evaluation = result['evaluation']
 
-                # **Incrementa os totals** para o Grafana calcular médias
-                score_total_counter.inc(evaluation["score"])
-                tech_score_total_counter.inc(evaluation["technical_score"])
-                comm_score_total_counter.inc(evaluation["communication_score"])
+                # Obter texto do currículo e da vaga
+                curriculo_txt = st.session_state.profile.get("content", "")
+                vaga = st.session_state.selected_job
+                vaga_txt = vaga.get("description", "") + "\n" + "\n".join(vaga.get("requirements", []))
 
-                try:
-                    TelegramNotifier().notify_new_candidate(
+                # Gerar features via LLM
+                features_dict = gerar_features_com_llm(curriculo_txt, vaga_txt)
+
+                # Montar vetor de entrada para o modelo
+                features_input = montar_features(profile=features_dict, job={}, extra_data={})
+
+ 
+                # Score do modelo de ML (entre 0 e 1)
+                score_model = score_ml(features_input)
+
+                # Score do agente LLM (já retornado)
+                score_agent = result['evaluation']['score'] / 100  # converter de % para 0–1
+
+                #   Score final (média simples ou ponderada, se quiser)
+                score_final = round((0.6*score_model + 0.4*score_agent), 3)
+
+                # Atualiza o score final no resultado
+                st.session_state.evaluation['score_final'] = score_final
+                st.session_state.evaluation['score_ml'] = round(score_model * 100, 2)
+                st.session_state.evaluation['score_agent'] = result['evaluation']['score']
+
+                # print(st.session_state.profile)
+                # Notificar recrutador apenas se score_final > 0.8 (ou seja, 80%)
+                if score_final > 0.7:
+                    notifier = TelegramNotifier()
+                    notifier.notify_new_candidate(
                         st.session_state.profile,
                         st.session_state.selected_job,
                         st.session_state.evaluation
                     )
-                except Exception as e:
-                    logging.error(f"Erro Telegram: {e}")
-                st.session_state.current_step = "results"
+                
+                st.session_state.current_step = 'results'
             else:
                 st.session_state.current_question = result['next_question']
+                
             st.rerun()
+    
+    # Mostrar progresso
+    progress = len(st.session_state.interview_agent.interview_state.get('answers', [])) / 5
+    st.progress(progress)
 
 def results_section():
-    st.header("Resultados")
-    e = st.session_state.evaluation
-    if e:
+    """Seção de resultados"""
+    st.header("Resultados da Avaliação")
+    
+    if st.session_state.evaluation:
         col1, col2 = st.columns(2)
+        
         with col1:
-            st.metric("Geral", f"{e['score']}%")
-            st.metric("Técnica", f"{e['technical_score']}%")
-            st.metric("Comunicação", f"{e['communication_score']}%")
+            st.subheader("Pontuações")
+            st.metric("Score Final", f"{st.session_state.evaluation['score_final'] * 100:.2f}%")
+            st.metric("Pontuação Técnica", f"{st.session_state.evaluation['technical_score']}%")
+            st.metric("Comunicação", f"{st.session_state.evaluation['communication_score']}%")
+            st.metric("Score ML", f"{st.session_state.evaluation['score_ml']}%")
+            st.metric("Score Agente", f"{st.session_state.evaluation['score_agent']}%")
+
+        
         with col2:
             st.subheader("Pontos Fortes")
-            for s in e['strengths']:
-                st.write(f"✓ {s}")
-            st.subheader("A melhorar")
-            for a in e['areas_for_improvement']:
-                st.write(f"• {a}")
-        st.write("**Feedback**")
-        st.write(e["feedback"])
-        st.write("**Recomendação**")
-        st.write(e["recommendation"])
-
-        if st.button("Voltar"):
+            for strength in st.session_state.evaluation['strengths']:
+                st.write(f"✓ {strength}")
+            
+            st.subheader("Áreas para Desenvolvimento")
+            for area in st.session_state.evaluation['areas_for_improvement']:
+                st.write(f"• {area}")
+        
+        st.subheader("Feedback")
+        st.write(st.session_state.evaluation['feedback'])
+        
+        st.subheader("Recomendação")
+        st.write(st.session_state.evaluation['recommendation'])
+        
+        if st.button("Voltar para Vagas"):
+            # Resetar estado
             st.session_state.current_step = 'jobs'
             st.session_state.selected_job = None
             st.session_state.interview_completed = False
             st.session_state.evaluation = None
-            st.session_state.pop("current_question", None)
+            if 'current_question' in st.session_state:
+                del st.session_state.current_question
             st.rerun()
 
 def main():
     st.title("🎯 AI Job Matcher")
-    step = st.session_state.current_step
-    if step == "jobs":
-        for j in load_job_listings():
-            display_job_card(j)
-    elif step == "profile":
+    
+    # Navegação principal
+    if st.session_state.current_step == 'jobs':
+        st.header("Vagas Disponíveis")
+        jobs = load_job_listings()
+        for job in jobs:
+            display_job_card(job)
+    
+    elif st.session_state.current_step == 'profile':
         profile_section()
-    elif step == "interview":
+    
+    elif st.session_state.current_step == 'interview':
         interview_section()
-    elif step == "results":
+    
+    elif st.session_state.current_step == 'results':
         results_section()
 
 if __name__ == "__main__":
     main()
+
+

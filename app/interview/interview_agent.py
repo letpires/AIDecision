@@ -33,6 +33,8 @@ class InterviewAgent:
             'score': None,
             'feedback': None
         }
+
+        print(self.interview_state)
         
         return self.get_next_question()
     
