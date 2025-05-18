@@ -6,6 +6,8 @@
 
 ## 📌 Visão Geral do Projeto
 
+![Fluxograma do Projeto](fluxograma.png)
+
 Este projeto tem como objetivo otimizar o processo de recrutamento utilizando Inteligência Artificial para realizar entrevistas simuladas com candidatos. A aplicação analisa o currículo, conduz uma conversa interativa baseada na vaga escolhida e entrega uma avaliação com base em critérios técnicos e comportamentais.
 
 ---
@@ -64,10 +66,30 @@ O pré-processamento dos dados textuais foi um dos principais desafios do projet
 Essa abordagem permitiu criar uma base sólida para o modelo de classificação, mesmo com limitações de uso de IA generativa.
 
 ### 3. Desenvolvimento do Modelo
-- Separação dos dados em treino e teste
-- Treinamento de diferentes algoritmos de classificação
-- Validação cruzada para avaliação do desempenho
-- Seleção do melhor modelo baseado em métricas de avaliação
+
+Durante o desenvolvimento, testamos diferentes abordagens de classificação para encontrar o melhor desempenho possível. Abaixo, apresentamos um resumo dos principais experimentos realizados:
+
+| Modelo                | Balanceamento | Acurácia | Precision (1) | Recall (1) |
+|-----------------------|:-------------:|:--------:|:-------------:|:----------:|
+| Regressão Logística   | Não           | 0.76     | 0.59          | 0.13       |
+| Regressão Logística   | Sim           | 0.65     | 0.37          | 0.56       |
+| Random Forest         | Sim           | 0.80     | 0.64          | 0.50       |
+
+- **Acurácia:** Proporção de previsões corretas.
+- **Precision (1):** Proporção de positivos previstos que realmente são positivos.
+- **Recall (1):** Proporção de positivos reais que foram corretamente identificados.
+
+> **Observações:**
+> - O balanceamento das classes foi fundamental para melhorar o recall da classe minoritária (1).
+> - O modelo Random Forest apresentou o melhor desempenho geral, especialmente em termos de equilíbrio entre precisão e recall.
+
+#### Melhorias e Próximos Passos
+
+- **Redução de Dimensionalidade:** Aplicação de técnicas como PCA ou seleção de features para reduzir o número de variáveis e evitar overfitting.
+- **Validação Cruzada:** Uso de cross-validation para garantir maior robustez na avaliação dos modelos.
+- **Ajuste de Hiperparâmetros:** Busca por hiperparâmetros ideais (Grid Search, Random Search) para otimizar o desempenho dos modelos.
+- **Testes com outros algoritmos:** Explorar modelos como XGBoost, LightGBM, SVM, entre outros.
+- **Aprimoramento do pré-processamento textual:** Investigar embeddings mais avançados (BERT, Word2Vec) para representação dos textos.
 
 ### 4. Implementação
 - Integração do modelo com a aplicação principal
