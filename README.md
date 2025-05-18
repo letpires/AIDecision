@@ -96,7 +96,7 @@ Acesse:
 - Grafana: http://localhost:3000 (admin/admin)
 
 Importe o dashboard JSON:
-- `monitoring/ai_job_matcher_grafana_dashboard.json`
+- `monitoring/monitoring_dashboard.json`
 
 ---
 
