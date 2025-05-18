@@ -184,8 +184,8 @@ def profile_section():
 
 
             # Salvar perfil em arquivo JSON
-            os.makedirs("/Users/leticiapires/Desktop/AIDecision/app/static/profiles", exist_ok=True)
-            profile_path = os.path.join("/Users/leticiapires/Desktop/AIDecision/app/static/profiles", f"{nome.replace(' ', '_').lower()}.json")
+            os.makedirs("app/static/profiles", exist_ok=True)
+            profile_path = os.path.join("app/static/profiles", f"{nome.replace(' ', '_').lower()}.json")
             # with open(profile_path, "w", encoding="utf-8") as f:
             #     json.dump(st.session_state.profile, f, ensure_ascii=False, indent=2)
             

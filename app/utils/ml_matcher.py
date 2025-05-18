@@ -7,7 +7,7 @@ import pandas as pd
 
 
 # Carregue o modelo uma vez só
-ML_MODEL = joblib.load('/Users/leticiapires/Desktop/AIDecision/app/utils/modelo_rf_completo.joblib')
+ML_MODEL = joblib.load('/app/utils/modelo_rf_completo.joblib')
 
 MODEL_FEATURES = [
     'perfil_vaga_vaga_especifica_para_pcd', 'possui_certificacao', 'remuneracao_limpa',

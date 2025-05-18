@@ -23,7 +23,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, accuracy_score
 
 
-data = pd.read_csv('/Users/leticiapires/Desktop/AIDecision/data_final.csv')
+data = pd.read_csv('/app/data_final.csv')
 
 #Deletar colunas ['id_vaga', 'situacao_candidato', 'info_vaga', 'info_candidato', 'info_limpa_candidato', 'info_limpa_vaga']
 data.drop(columns=['id_vaga', 'situacao_candidato', 'info_vaga', 'info_candidato', 'id_candidato', 'info_limpa_candidato', 'info_limpa_vaga'], inplace=True)
@@ -92,4 +92,4 @@ print("Acurácia:", accuracy_score(y_test, y_pred))
 print("\nRelatório de Classificação:\n", classification_report(y_test, y_pred))
 
 # === 7. Salvar modelo completo ===
-joblib.dump(pipeline, '/Users/leticiapires/Desktop/AIDecision/app/utils/modelo_rf_completo.joblib')
+joblib.dump(pipeline, '/app/utils/modelo_rf_completo.joblib')
