@@ -13,9 +13,10 @@ Este projeto tem como objetivo otimizar o processo de recrutamento utilizando In
 ## 🚀 Funcionalidades
 
 - 📋 Visualização de vagas cadastradas
-- 🧑 Criação de perfil de candidato com LinkedIn e GitHub
+- 🧑 Criação de perfil de candidato com LinkedIn e GitHub (Futuro)
 - 📄 Upload e parsing automático de currículos (PDF)
-- 🤖 Entrevista técnica com agente de IA (OpenAI)
+- 📝 Previsão/score usando modelo de classifição com base nos dados da empresa
+- 🤖 Entrevista técnica com IA (OpenAI)
 - 📊 Avaliação com pontuação, pontos fortes e sugestões de melhoria
 - 📲 Notificação automática ao recrutador via Telegram
 - 📈 Monitoramento de métricas com Prometheus e Grafana
@@ -23,6 +24,57 @@ Este projeto tem como objetivo otimizar o processo de recrutamento utilizando In
 
 ---
 
+## Modelo de classificação
+
+O processo de desenvolvimento do modelo de classificação seguiu as seguintes etapas:
+
+### 1. Coleta e Preparação dos Dados
+- Coleta de arquivos JSON contendo dados históricos da empresa
+- Merge dos dados em um único DataFrame utilizando o notebook `merge.ipynb`
+- Análise exploratória e tratamento dos dados no notebook `eda.ipynb`
+
+### 2. Pré-processamento dos Dados
+
+O pré-processamento dos dados textuais foi um dos principais desafios do projeto, especialmente devido à variedade e à qualidade das informações presentes nos campos de texto dos currículos e das vagas. Abaixo, detalhamos a lógica adotada:
+
+#### Consolidação das Informações Textuais
+- Algumas colunas como `cv_pt` (currículo em português) podem estar nulas, enquanto outras colunas possuem informações relevantes do candidato.
+- Concatenamos todas as colunas de texto relevantes para o candidato em uma única coluna chamada `info_candidato` e, para a vaga, em `info_vaga`. Isso garante que toda informação útil seja considerada, mesmo que esteja dispersa em diferentes campos.
+
+#### Limpeza e Normalização
+- Remoção de stopwords, acentos e caracteres especiais.
+- Padronização para caixa baixa (lowercase).
+- Tokenização dos textos.
+
+#### Extração de Palavras-chave e Categorias
+- A ideia inicial era utilizar IA (GPT) para analisar a descrição da vaga e gerar automaticamente uma lista de palavras-chave e categorias relevantes, conforme exemplo abaixo:
+
+| VAGA                   | DESCRICAO                                                                 | PALAVRAS_CHAVE                                      | CATEGORIAS                                                        |
+|------------------------|---------------------------------------------------------------------------|-----------------------------------------------------|-------------------------------------------------------------------|
+| ANALISTA DE DADOS JR   | Profissional com conhecimento em Power BI, Looker, Excel, análise exploratória | power bi, looker, excel, analise exploratoria, ...  | {backend: null, frontend: null, dados_bi: [power bi, looker]}     |
+| ANALISTA DE SISTEMAS JR| Responsável por manutenção de sistemas, SQL, lógica de programação, UML   | sql, logica de programacao, uml, ...                | {backend: [sql, lógica de programação], sistemas: [uml]}          |
+| ANALISTA DE SISTEMAS SR| Experiência em modelagem, integração de APIs, liderança de projetos        | api, arquitetura, modelagem, lideranca, ...         | {backend: [api, arquitetura de software], sistemas: [modelagem]}  |
+
+- Por restrição de créditos na OpenAI, não foi possível usar o GPT para todo o processamento de texto.
+- Optamos por definir categorias fixas e regras para extração de palavras-chave, utilizando dicionários e listas pré-definidas.
+
+#### Matching de Habilidades
+- A partir das palavras-chave/categorias extraídas da vaga, comparamos com as informações do candidato (`info_candidato`) para calcular o grau de aderência (match) entre o perfil e a vaga.
+
+Essa abordagem permitiu criar uma base sólida para o modelo de classificação, mesmo com limitações de uso de IA generativa.
+
+### 3. Desenvolvimento do Modelo
+- Separação dos dados em treino e teste
+- Treinamento de diferentes algoritmos de classificação
+- Validação cruzada para avaliação do desempenho
+- Seleção do melhor modelo baseado em métricas de avaliação
+
+### 4. Implementação
+- Integração do modelo com a aplicação principal
+- Geração de scores para novos candidatos
+- Monitoramento contínuo do desempenho do modelo
+
+---
 ## 🛠️ Instalação Local
 
 ```bash
@@ -196,11 +248,11 @@ wget -O monitoring/ai_job_matcher_dashboard.json \
 
 2. Acesse o Grafana em http://localhost:3000
 
-3. No menu lateral, clique em “+” → Import
+3. No menu lateral, clique em "+" → Import
 
-4. No campo “Upload JSON file or Grafana.com Dashboard”, selecione monitoring/monitoring_dashboard.json
+4. No campo "Upload JSON file or Grafana.com Dashboard", selecione monitoring/monitoring_dashboard.json
 
-5. Garanta que o campo Name seja preenchido automaticamente como “Monitoramento - AI Job Matcher”
+5. Garanta que o campo Name seja preenchido automaticamente como "Monitoramento - AI Job Matcher"
 
 6. elecione a Data source chamada Prometheus
 
