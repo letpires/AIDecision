@@ -93,6 +93,7 @@ Durante o desenvolvimento, testamos diferentes abordagens de classificação par
 
 ### 4. Implementação
 - Integração do modelo com a aplicação principal
+  - Para integração do modelo, após o carregamento do joblib, foi utilizado OpenAI, pra organizar as features que vão passar pelo modelo de classificação e então integrado ao score gerado pelo LLM.
 - Geração de scores para novos candidatos
 - Monitoramento contínuo do desempenho do modelo
 
