@@ -1,10 +1,29 @@
-# ─── Métricas + ML Antes de tudo ──────────────────────────────────────────────
+# ─── Início: setup de métricas Prometheus com proteção contra porta ocupada ───
+import logging
+import socket
+import errno
 from prometheus_client import start_http_server, Counter, Gauge, REGISTRY
-from utils.ml_matcher import gerar_features_com_llm, montar_features, score_ml
 
-# Inicia o endpoint /metrics em 0.0.0.0:9000
-start_http_server(9000, addr="0.0.0.0")
+# Configuração de logging
+logging.basicConfig(
+    filename="logs/app.log",
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s"
+)
 
+def start_prometheus_safe(port: int = 9000, addr: str = "0.0.0.0"):
+    """Inicia o servidor /metrics, ignorando se a porta já estiver em uso."""
+    try:
+        start_http_server(port, addr=addr)
+        logging.info(f"Prometheus metrics listening on {addr}:{port}")
+    except OSError as e:
+        if e.errno == errno.EADDRINUSE:
+            logging.warning(f"Prometheus port {port} already in use, skipping metrics startup.")
+        else:
+            raise
+
+start_prometheus_safe()
+# ─────────────────────────────────────────────────────────────────────────────
 def get_or_create_metric(metric_cls, name, documentation):
     try:
         return REGISTRY._names_to_collectors[name]
@@ -25,12 +44,13 @@ communication_gauge      = get_or_create_metric(Gauge,   "evaluation_communicati
 # ───────────────────────────────────────────────────────────────────────────────
 
 import streamlit as st
-import pandas as pd 
 import json
 import os
-import logging
 from datetime import datetime
 from pathlib import Path
+
+# métricas customizadas
+from utils.ml_matcher import gerar_features_com_llm, montar_features, score_ml
 
 from config import (
     DATA_DIR, RESUMES_DIR, SUPPORTED_FILE_TYPES,
@@ -40,24 +60,34 @@ from interview.interview_agent import InterviewAgent
 from utils.telegram_notifier import TelegramNotifier
 from utils.resume_parser import ResumeParser
 
-# Diretório base do projeto
+# BASE_DIR
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Configuração da página
-st.set_page_config(
-    page_title="AI Job Matcher",
-    page_icon="🎯",
-    layout="wide"
-)
+# Setup métricas Prometheus
 
-# Logging
-logging.basicConfig(
-    filename="logs/app.log",
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s"
-)
+def get_or_create_metric(metric_cls, name, documentation):
+    try:
+        return REGISTRY._names_to_collectors[name]
+    except KeyError:
+        return metric_cls(name, documentation)
 
-# Estado da sessão
+interview_counter = get_or_create_metric(Counter, "interviews_total", "Total de entrevistas iniciadas")
+answer_counter = get_or_create_metric(Counter, "interview_answers_total", "Total de respostas dadas")
+
+# counters para acumulados de score
+score_total_counter = get_or_create_metric(Counter, "interview_score_total", "Soma das pontuações gerais")
+tech_score_total_counter = get_or_create_metric(Counter, "interview_technical_score_total", "Soma das pontuações técnicas")
+comm_score_total_counter = get_or_create_metric(Counter, "interview_communication_score_total", "Soma das pontuações de comunicação")
+
+# gauges para pontuação atual
+score_gauge = get_or_create_metric(Gauge, "evaluation_score", "Pontuação geral da avaliação")
+technical_gauge = get_or_create_metric(Gauge, "evaluation_technical_score", "Pontuação técnica")
+communication_gauge = get_or_create_metric(Gauge, "evaluation_communication_score", "Pontuação de comunicação")
+
+# Streamlit page config
+st.set_page_config(page_title="AI Job Matcher", page_icon="🎯", layout="wide")
+
+# inicializa estado
 if 'interview_agent'     not in st.session_state: st.session_state.interview_agent     = InterviewAgent()
 if 'resume_parser'       not in st.session_state: st.session_state.resume_parser       = ResumeParser()
 if 'current_step'        not in st.session_state: st.session_state.current_step        = 'jobs'
