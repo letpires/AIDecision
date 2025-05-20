@@ -91,9 +91,10 @@ Durante o desenvolvimento, testamos diferentes abordagens de classificação par
 - **Testes com outros algoritmos:** Explorar modelos como XGBoost, LightGBM, SVM, entre outros.
 - **Aprimoramento do pré-processamento textual:** Investigar embeddings mais avançados (BERT, Word2Vec) para representação dos textos.
 
+Esse modelo foi integrado a LLM. Primeiro, após o carregamento do joblib, foi utilizado OpenAI, pra organizar as features que vão passar pelo modelo de classificação e então integrado ao score gerado pelo LLM.
+
 ### 4. Implementação
 - Integração do modelo com a aplicação principal
-  - Para integração do modelo, após o carregamento do joblib, foi utilizado OpenAI, pra organizar as features que vão passar pelo modelo de classificação e então integrado ao score gerado pelo LLM.
 - Geração de scores para novos candidatos
 - Monitoramento contínuo do desempenho do modelo
 
