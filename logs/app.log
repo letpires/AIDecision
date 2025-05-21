@@ -255,3 +255,104 @@
 2025-05-20 20:12:26,160 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2025-05-20 20:12:50,846 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2025-05-20 20:12:50,972 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 14:21:49,767 [INFO] Prometheus metrics listening on 0.0.0.0:9000
+2025-05-21 14:22:48,512 [INFO] Prometheus metrics listening on 0.0.0.0:9000
+2025-05-21 15:08:00,388 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:08:03,166 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:08:03,235 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:09:01,438 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:09:02,998 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-21 15:09:03,136 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:09:04,405 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-21 15:09:05,366 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:09:11,882 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:09:13,659 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:09:13,733 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:09:14,604 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:09:15,401 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:09:15,477 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:09:17,402 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:09:18,367 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:09:18,440 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:09:19,477 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:09:20,554 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:09:20,623 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:09:21,602 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:09:23,998 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:09:50,938 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:09:51,059 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:10:05,099 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:10:05,177 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:10:09,068 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:10:09,145 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:10:35,545 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:10:36,385 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-21 15:10:36,467 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:10:37,908 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-21 15:10:38,971 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:10:53,673 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:10:54,668 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:10:54,766 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:11:03,008 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:11:04,414 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:11:04,488 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:11:12,788 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:11:13,935 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:11:14,008 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:11:17,857 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:11:18,945 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:11:19,072 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:11:41,157 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:11:44,847 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:12:15,188 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:12:16,123 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:13:27,797 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:13:27,872 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:13:30,043 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:13:30,116 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:13:55,246 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:13:56,725 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-21 15:13:56,808 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:13:58,400 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-21 15:13:59,315 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:14:06,142 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:14:07,151 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:14:07,285 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:14:07,996 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:14:08,840 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:14:08,912 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:14:09,541 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:14:10,476 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:14:10,549 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:14:11,911 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:14:12,970 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:14:13,041 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:14:14,295 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:14:16,323 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:14:38,681 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:16:58,002 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:16:59,598 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:16:59,670 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:17:46,070 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:17:46,847 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-21 15:17:47,004 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:17:47,922 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-21 15:17:49,340 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:18:06,915 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:18:08,051 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:18:08,125 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:18:09,180 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:18:10,332 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:18:10,408 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:18:11,432 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:18:12,525 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:18:12,588 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:18:14,034 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:18:15,014 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:18:15,085 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:18:16,134 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:18:19,341 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:18:41,542 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 15:18:42,591 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:20:15,144 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.
+2025-05-21 15:20:15,288 [WARNING] Prometheus port 9000 already in use, skipping metrics startup.

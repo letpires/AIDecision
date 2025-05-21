@@ -164,7 +164,7 @@ pytest tests/functional/
 
 ## 📊 Monitoramento com Prometheus + Grafana
 
-1. A aplicação expõe métricas em http://localhost:9000/metrics
+1. A aplicação expõe métricas em http://127.0.0.1:9000/metrics
 2. Use docker-compose up -d para subir Prometheus e Grafana
 
 Acesse:
@@ -208,6 +208,7 @@ services:
     container_name: ai-job-matcher-app
     ports:
       - "8501:8501"
+      - "9000:9000"
     env_file:
       - .env
     volumes:
